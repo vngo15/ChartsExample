@@ -21,16 +21,29 @@ import UIKit
 import Charts
 
 class StackableChartView: CombinedChartView {
+    lazy var headerLabel: UILabel? = UILabel()
     let conditionMarker = ConditionChartMarker.viewFromXib() as? ConditionChartMarker
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         style()
+        initHeader()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         style()
+        initHeader()
+    }
+    
+    
+    private func initHeader() {
+        addSubview(headerLabel!)
+        headerLabel?.textColor = UIColor.white
+        headerLabel?.textAlignment = .center
+        headerLabel?.text = "test"
+        headerLabel?.backgroundColor = UIColor.blue
+        headerLabel?.isHidden = true
     }
     
     private func style() {
@@ -81,6 +94,7 @@ class StackableChartView: CombinedChartView {
     
     override func highlightValue(_ highlight: Highlight?, callDelegate: Bool) {
         super.highlightValue(highlight, callDelegate: callDelegate)
+        updateHeader(highlight: highlight)
         
         if let highlight = highlight, let highlights = (highlighter as? StackableHighlighter)?.getHighlights(xValue: highlight.x, x: 0, y: 0) {
             highlightValues(highlights) // highlight multiple values
@@ -116,6 +130,22 @@ class StackableChartView: CombinedChartView {
                 conditionMarker?.refreshContent(entry: entry, highlight: h)
                 conditionMarker?.draw(context: context, point: point)
             }
+        }
+    }
+    
+    private func updateHeader(highlight: Highlight?) {
+        if let highlight = highlight, let entry = data?.entryForHighlight(highlight) {
+            headerLabel?.isHidden = false
+            headerLabel?.frame = CGRect(x: 0, y: 0,width: self.frame.width, height: viewPortHandler.contentTop + K.XAxis.gridLineHeight * 2)
+            let date = Date(timeIntervalSinceReferenceDate: entry.x * 60)
+            if date.isToday {
+                headerLabel?.text = "Today " + date.toString(format: "h:mmaa")!
+            } else {
+                headerLabel?.text = date.toString(format: "E MM/dd h:mmaa")
+            }
+            
+        } else {
+            headerLabel?.isHidden = true
         }
     }
 }

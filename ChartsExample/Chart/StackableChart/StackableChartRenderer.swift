@@ -30,9 +30,12 @@ class StackableChartRenderer: BubbleChartRenderer {
             if !viewPortHandler.isInBoundsTop(rect.origin.y + rect.height)
                 || !viewPortHandler.isInBoundsBottom(rect.origin.y) || !viewPortHandler.isInBoundsLeft(rect.origin.x + rect.width) {
                 continue
-            } else if !viewPortHandler.isInBoundsRight(rect.origin.x) {
+            }
+            
+            if !viewPortHandler.isInBoundsRight(rect.origin.x) {
                 break
             }
+            
             var alpha: CGFloat = 1
             // check if it is highlighted, if it is, then change the alpha of the data
             if let data = dataProvider.bubbleData as? StackableChartData {
@@ -98,9 +101,9 @@ class StackableChartRenderer: BubbleChartRenderer {
             if !isInBoundsX(entry: entry, dataSet: dataSet) { continue }
             let transform = dataProvider.getTransformer(forAxis: dataSet.axisDependency).valueToPixelMatrix
             let rect = getRect(forEntry: entry, animator: animator, transform: transform, sizeMultiplier: entry.highlightedMultipler)
-            
+            high.setDraw(x: rect.origin.x + rect.width / 2, y: rect.origin.y + rect.height / 2)
             if !viewPortHandler.isInBoundsTop(rect.origin.y + rect.height)
-                || !viewPortHandler.isInBoundsBottom(rect.origin.y) {
+                || !viewPortHandler.isInBoundsBottom(rect.origin.y - rect.height) {
                 continue
             }
             
@@ -134,9 +137,7 @@ class StackableChartRenderer: BubbleChartRenderer {
                     context.resetClip()
                 }
             }
-            high.setDraw(x: rect.origin.x + rect.width / 2, y: rect.origin.y + rect.width / 2)
         }
-        
         context.restoreGState()
     }
     
