@@ -20,6 +20,8 @@
 		107096FB1F991D6F00FBBB03 /* ConditionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107096FA1F991D6F00FBBB03 /* ConditionChartView.swift */; };
 		107096FD1F991ED200FBBB03 /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107096FC1F991ED200FBBB03 /* Date+Helper.swift */; };
 		107097031F993F7800FBBB03 /* GradientLineChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107097021F993F7800FBBB03 /* GradientLineChartRenderer.swift */; };
+		10723A7D1FA8E5C70043B432 /* ActivityChartMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10723A7C1FA8E5C70043B432 /* ActivityChartMarker.swift */; };
+		10723A7F1FA8E5F00043B432 /* ActivityChartMarker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10723A7E1FA8E5F00043B432 /* ActivityChartMarker.xib */; };
 		108292021FA0F68E00D45E5D /* StackableChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108292011FA0F68E00D45E5D /* StackableChartData.swift */; };
 		108292071FA105E900D45E5D /* BaseChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108292061FA105E900D45E5D /* BaseChartView.swift */; };
 		1082920C1FA1270300D45E5D /* StackableChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082920B1FA1270300D45E5D /* StackableChartRenderer.swift */; };
@@ -55,6 +57,8 @@
 		107096FA1F991D6F00FBBB03 /* ConditionChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionChartView.swift; sourceTree = "<group>"; };
 		107096FC1F991ED200FBBB03 /* Date+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
 		107097021F993F7800FBBB03 /* GradientLineChartRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLineChartRenderer.swift; sourceTree = "<group>"; };
+		10723A7C1FA8E5C70043B432 /* ActivityChartMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityChartMarker.swift; sourceTree = "<group>"; };
+		10723A7E1FA8E5F00043B432 /* ActivityChartMarker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityChartMarker.xib; sourceTree = "<group>"; };
 		108292011FA0F68E00D45E5D /* StackableChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackableChartData.swift; sourceTree = "<group>"; };
 		108292061FA105E900D45E5D /* BaseChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChartView.swift; sourceTree = "<group>"; };
 		1082920B1FA1270300D45E5D /* StackableChartRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackableChartRenderer.swift; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 			children = (
 				10DAC5E51F9E8E0700D293E7 /* ConditionChartMarker.swift */,
 				10DAC5E81F9E8F6B00D293E7 /* ConditionChartMarker.xib */,
+				10723A7C1FA8E5C70043B432 /* ActivityChartMarker.swift */,
+				10723A7E1FA8E5F00043B432 /* ActivityChartMarker.xib */,
 			);
 			path = Marker;
 			sourceTree = "<group>";
@@ -313,6 +319,7 @@
 				107096ED1F99139900FBBB03 /* LaunchScreen.storyboard in Resources */,
 				107096EA1F99139900FBBB03 /* Assets.xcassets in Resources */,
 				107096F51F9913B000FBBB03 /* podfile in Resources */,
+				10723A7F1FA8E5F00043B432 /* ActivityChartMarker.xib in Resources */,
 				107096E81F99139900FBBB03 /* Main.storyboard in Resources */,
 				10DAC5E91F9E8F6B00D293E7 /* ConditionChartMarker.xib in Resources */,
 			);
@@ -388,6 +395,7 @@
 				10C192EF1FA7C8B900FCA04D /* CGPath+Helper.swift in Sources */,
 				103CC2D51FA3F2F700C9D88E /* UIImage+Helper.swift in Sources */,
 				107096E51F99139900FBBB03 /* ConditionViewController.swift in Sources */,
+				10723A7D1FA8E5C70043B432 /* ActivityChartMarker.swift in Sources */,
 				1082920C1FA1270300D45E5D /* StackableChartRenderer.swift in Sources */,
 				10E1F61D1F9EA24B008DBFE7 /* Array+Helper.swift in Sources */,
 				10E1F6201F9EC36F008DBFE7 /* GradientLineChartDataSet.swift in Sources */,

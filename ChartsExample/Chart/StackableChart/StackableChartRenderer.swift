@@ -100,9 +100,15 @@ class StackableChartRenderer: BubbleChartRenderer {
             let rect = getRect(forEntry: entry, animator: animator, transform: transform, sizeMultiplier: entry.highlightedMultipler)
             
             if !viewPortHandler.isInBoundsTop(rect.origin.y + rect.height)
-                || !viewPortHandler.isInBoundsBottom(rect.origin.y) || !viewPortHandler.isInBoundsLeft(rect.origin.x + rect.width) {
+                || !viewPortHandler.isInBoundsBottom(rect.origin.y) {
                 continue
-            } else if !viewPortHandler.isInBoundsRight(rect.origin.x) {
+            }
+            
+            if !viewPortHandler.isInBoundsLeft(rect.origin.x + rect.width) {
+                continue
+            }
+            
+            if !viewPortHandler.isInBoundsRight(rect.origin.x) {
                 break
             }
             
@@ -128,7 +134,7 @@ class StackableChartRenderer: BubbleChartRenderer {
                     context.resetClip()
                 }
             }
-            high.setDraw(x: rect.origin.x, y: rect.origin.y)
+            high.setDraw(x: rect.origin.x + rect.width / 2, y: rect.origin.y + rect.width / 2)
         }
         
         context.restoreGState()

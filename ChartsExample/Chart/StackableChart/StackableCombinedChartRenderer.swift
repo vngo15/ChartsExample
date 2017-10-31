@@ -10,7 +10,6 @@ import UIKit
 import Charts
 
 class StackableCombinedChartRenderer: CombinedChartRenderer {
-    
     override func drawHighlighted(context: CGContext, indices: [Highlight]) {
         if let highlight = indices.first {
             let point = CGPoint(x: highlight.x, y: highlight.y)
@@ -18,7 +17,6 @@ class StackableCombinedChartRenderer: CombinedChartRenderer {
                 if let gradientRenderer = subRenderer as? GradientLineChartRenderer, let dataSets = gradientRenderer.dataProvider?.lineData?.dataSets {
                     for set in dataSets {
                         gradientRenderer.drawShadedLine(context: context, point: point, set: set as! LineChartDataSet)
-                        gradientRenderer.drawMarker(context: context, xValue: Double(point.x))
                     }
                 }
             }
@@ -42,5 +40,14 @@ class StackableCombinedChartRenderer: CombinedChartRenderer {
         context.clip()
         context.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: .drawsBeforeStartLocation)
         context.restoreGState()
+    }
+    
+    public func gradientLineRenderer() -> GradientLineChartRenderer? {
+        for r in subRenderers {
+            if r.isKind(of: GradientLineChartRenderer.self) {
+                return r as? GradientLineChartRenderer
+            }
+        }
+        return nil
     }
 }

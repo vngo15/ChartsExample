@@ -85,7 +85,10 @@ class ConditionChartView: LineChartView {
     
     override func highlightValue(_ highlight: Highlight?, callDelegate: Bool) {
         super.highlightValue(highlight, callDelegate: callDelegate)
-        
+        updateHeader(highlight: highlight)
+    }
+    
+    private func updateHeader(highlight: Highlight?) {
         if let highlight = highlight, let entry = data?.entryForHighlight(highlight) {
             headerLabel?.isHidden = false
             headerLabel?.frame = CGRect(x: 0, y: 0,width: self.frame.width, height: viewPortHandler.contentTop + K.XAxis.gridLineHeight * 2)

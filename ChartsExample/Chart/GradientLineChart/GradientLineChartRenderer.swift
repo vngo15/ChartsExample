@@ -472,26 +472,6 @@ public class GradientLineChartRenderer: LineRadarRenderer {
         return filled
     }
     
-    /// Generates the path that is used for gradient drawing.
-    private func generatePath(dataSet: ILineChartDataSet, fillMin: CGFloat, from: Int, to: Int, matrix: CGAffineTransform) -> CGPath {
-        let phaseX = CGFloat(animator?.phaseX ?? 0)
-        let phaseY = CGFloat(animator?.phaseY ?? 0)
-        
-        var e: ChartDataEntry!
-        
-        let generatedPath = CGMutablePath()
-        e = dataSet.entryForIndex(from)
-        if e != nil {
-            generatedPath.move(to: CGPoint(x: CGFloat(e.x), y: CGFloat(e.y) * phaseY), transform: matrix)
-        }
-        // create a new path
-        for _ in from + 1...Int(ceil(CGFloat(to - from) * phaseX + CGFloat(from)))  {
-            guard let e = dataSet.entryForIndex(from) else { continue }
-            generatedPath.move(to: CGPoint(x: CGFloat(e.x), y: CGFloat(e.y) * phaseY), transform: matrix)
-        }
-        return generatedPath
-    }
-    
     open override func drawValues(context: CGContext) {
         guard
             let dataProvider = dataProvider,
@@ -574,101 +554,7 @@ public class GradientLineChartRenderer: LineRadarRenderer {
         }
     }
     
-    public override func drawExtras(context: CGContext) {}
-    
-    // Draw circular values
-    fileprivate func drawCircles(context: CGContext, startPoint: Int = 0, shaderEnabled: Bool = false) {
-        guard
-            let dataProvider = dataProvider,
-            let lineData = dataProvider.lineData,
-            let animator = animator,
-            let viewPortHandler = self.viewPortHandler
-            else { return }
-        
-        let phaseY = animator.phaseY
-        
-        let dataSets = lineData.dataSets
-        
-        var pt = CGPoint()
-        var rect = CGRect()
-        
-        context.saveGState()
-        
-        for i in 0 ..< dataSets.count {
-            guard let dataSet = lineData.getDataSetByIndex(i) as? ILineChartDataSet else { continue }
-            
-            if !dataSet.isVisible || !dataSet.isDrawCirclesEnabled || dataSet.entryCount == 0 {
-                continue
-            }
-            
-            let trans = dataProvider.getTransformer(forAxis: dataSet.axisDependency)
-            let valueToPixelMatrix = trans.valueToPixelMatrix
-            
-            _xBounds.set(chart: dataProvider, dataSet: dataSet, animator: animator)
-            
-            let circleRadius = dataSet.circleRadius
-            let circleDiameter = circleRadius * 2.0
-            let circleHoleRadius = dataSet.circleHoleRadius
-            let circleHoleDiameter = circleHoleRadius * 2.0
-            
-            let drawCircleHole = dataSet.isDrawCircleHoleEnabled &&
-                circleHoleRadius < circleRadius &&
-                circleHoleRadius > 0.0
-            
-            for j in stride(from: max(_xBounds.min, startPoint), through: _xBounds.range + _xBounds.min, by: 1) {
-                guard let e = dataSet.entryForIndex(j) else { break }
-                
-                pt.x = CGFloat(e.x)
-                pt.y = CGFloat(e.y * phaseY)
-                pt = pt.applying(valueToPixelMatrix)
-                
-                if (!viewPortHandler.isInBoundsRight(pt.x)) {
-                    break
-                }
-                
-                // make sure the circles don't do shitty things outside bounds
-                if (!viewPortHandler.isInBoundsLeft(pt.x) || !viewPortHandler.isInBoundsY(pt.y)) {
-                    continue
-                }
-                
-                context.setFillColor(dataSet.getCircleColor(atIndex: j)!.cgColor)
-                let scaleFactor = (dataSet as? GradientLineChartDataSet)?.circleScaleFactor(atIndex: j) ?? 1
-                // scale up the circle if it is min or max
-                rect.size.width = circleDiameter * scaleFactor
-                rect.size.height = circleDiameter * scaleFactor
-                rect.origin.x = pt.x - circleRadius * scaleFactor
-                rect.origin.y = pt.y - circleRadius * scaleFactor
-                
-                context.fillEllipse(in: rect)
-                
-                if drawCircleHole {
-                    let color = ((dataSet as? GradientLineChartDataSet)?.getHoleCircleColor(atIndex: j)?.cgColor) ?? dataSet.circleHoleColor!.cgColor
-                    context.setFillColor(color)
-                    
-                    // The hole rect
-                    rect.origin.x = pt.x - circleHoleRadius * scaleFactor
-                    rect.origin.y = pt.y - circleHoleRadius * scaleFactor
-                    rect.size.width = circleHoleDiameter * scaleFactor
-                    rect.size.height = circleHoleDiameter * scaleFactor
-                    
-                    context.fillEllipse(in: rect)
-                }
-                
-                if shaderEnabled {
-                    context.setFillColor(K.Colors.shader)
-                    // scale up the circle if it is min or max
-                    rect.size.width = circleDiameter * scaleFactor
-                    rect.size.height = circleDiameter * scaleFactor
-                    rect.origin.x = pt.x - circleRadius * scaleFactor
-                    rect.origin.y = pt.y - circleRadius * scaleFactor
-                    
-                    context.fillEllipse(in: rect)
-                }
-            }
-        }
-        
-        context.restoreGState()
-    }
+    public override func drawExtras(context: CGContext) {}  
     
     open override func drawHighlighted(context: CGContext, indices: [Highlight]) {
         guard
@@ -772,24 +658,6 @@ public class GradientLineChartRenderer: LineRadarRenderer {
         drawCircles(context: context, startPoint: set.entryIndex(entry: entry), shaderEnabled: true)
     }
     
-    func drawMarker(context: CGContext, xValue: Double) {
-        guard let viewPortHandler = viewPortHandler, let matrix = dataProvider?.getTransformer(forAxis: .left).valueToPixelMatrix, let dataSets = dataProvider?.lineData?.dataSets else {
-            return
-        }
-        for dataSet in dataSets {
-            if let dataSet = dataSet as? GradientLineChartDataSet, let yValue = interpolate(xValue: xValue, dataSet: dataSet) {
-                var point = CGPoint(x: xValue, y: yValue)
-                point = point.applying(matrix)
-                if !viewPortHandler.isInBounds(x: point.x, y: point.y) {
-                    continue
-                }
-                if let gradients = dataSet.gradients, let color = UIColor.gradientColor(gradients: gradients, position: CGFloat(yValue)) {
-                    ChartUtils.drawText(context: context, text: String(format: "%1.0f%% Excellent", yValue), point: point, align: .left, attributes: [NSAttributedStringKey.foregroundColor : color])
-                }
-            }
-        }
-    }
-    
     func drawShadedLine(context: CGContext, point: CGPoint, set: LineChartDataSet) {
         guard let viewPortHandler = viewPortHandler else { return }
         if let path = pathCopy?.copy(strokingWithWidth: set.lineWidth, lineCap: .butt, lineJoin: .miter, miterLimit: 10) {
@@ -807,7 +675,118 @@ public class GradientLineChartRenderer: LineRadarRenderer {
         }
     }
     
-    internal func drawGradientLine(context : CGContext, dataSet: ILineChartDataSet, spline: CGPath, matrix: CGAffineTransform) {
+    func interpolate(xValue: Double, dataSet: LineChartDataSet) -> Double? {
+        let phaseY = animator?.phaseY ?? 1
+        for i in 0..<dataSet.entryCount {
+            if dataSet.values[i].x >= xValue {
+                let nextIndex = i + 1 < dataSet.entryCount ? i + 1 : i
+                let cur = dataSet.values[i]
+                let next = dataSet.values[nextIndex]
+                
+                // return linear interpolation
+                return abs((xValue - cur.x) / (next.x - cur.x) * (next.y * phaseY - cur.y * phaseY) + cur.y * phaseY)
+            }
+        }
+        return nil
+    }
+}
+
+private extension GradientLineChartRenderer {
+    // Draw circular values
+    private func drawCircles(context: CGContext, startPoint: Int = 0, shaderEnabled: Bool = false) {
+        guard
+            let dataProvider = dataProvider,
+            let lineData = dataProvider.lineData,
+            let animator = animator,
+            let viewPortHandler = self.viewPortHandler
+            else { return }
+        
+        let phaseY = animator.phaseY
+        
+        let dataSets = lineData.dataSets
+        
+        var pt = CGPoint()
+        var rect = CGRect()
+        
+        context.saveGState()
+        
+        for i in 0 ..< dataSets.count {
+            guard let dataSet = lineData.getDataSetByIndex(i) as? ILineChartDataSet else { continue }
+            
+            if !dataSet.isVisible || !dataSet.isDrawCirclesEnabled || dataSet.entryCount == 0 {
+                continue
+            }
+            
+            let trans = dataProvider.getTransformer(forAxis: dataSet.axisDependency)
+            let valueToPixelMatrix = trans.valueToPixelMatrix
+            
+            _xBounds.set(chart: dataProvider, dataSet: dataSet, animator: animator)
+            
+            let circleRadius = dataSet.circleRadius
+            let circleDiameter = circleRadius * 2.0
+            let circleHoleRadius = dataSet.circleHoleRadius
+            let circleHoleDiameter = circleHoleRadius * 2.0
+            
+            let drawCircleHole = dataSet.isDrawCircleHoleEnabled &&
+                circleHoleRadius < circleRadius &&
+                circleHoleRadius > 0.0
+            
+            for j in stride(from: max(_xBounds.min, startPoint), through: _xBounds.range + _xBounds.min, by: 1) {
+                guard let e = dataSet.entryForIndex(j) else { break }
+                
+                pt.x = CGFloat(e.x)
+                pt.y = CGFloat(e.y * phaseY)
+                pt = pt.applying(valueToPixelMatrix)
+                
+                if (!viewPortHandler.isInBoundsRight(pt.x)) {
+                    break
+                }
+                
+                // make sure the circles don't do shitty things outside bounds
+                if (!viewPortHandler.isInBoundsLeft(pt.x) || !viewPortHandler.isInBoundsY(pt.y)) {
+                    continue
+                }
+                
+                context.setFillColor(dataSet.getCircleColor(atIndex: j)!.cgColor)
+                let scaleFactor = (dataSet as? GradientLineChartDataSet)?.circleScaleFactor(atIndex: j) ?? 1
+                // scale up the circle if it is min or max
+                rect.size.width = circleDiameter * scaleFactor
+                rect.size.height = circleDiameter * scaleFactor
+                rect.origin.x = pt.x - circleRadius * scaleFactor
+                rect.origin.y = pt.y - circleRadius * scaleFactor
+                
+                context.fillEllipse(in: rect)
+                
+                if drawCircleHole {
+                    let color = ((dataSet as? GradientLineChartDataSet)?.getHoleCircleColor(atIndex: j)?.cgColor) ?? dataSet.circleHoleColor!.cgColor
+                    context.setFillColor(color)
+                    
+                    // The hole rect
+                    rect.origin.x = pt.x - circleHoleRadius * scaleFactor
+                    rect.origin.y = pt.y - circleHoleRadius * scaleFactor
+                    rect.size.width = circleHoleDiameter * scaleFactor
+                    rect.size.height = circleHoleDiameter * scaleFactor
+                    
+                    context.fillEllipse(in: rect)
+                }
+                
+                if shaderEnabled {
+                    context.setFillColor(K.Colors.shader)
+                    // scale up the circle if it is min or max
+                    rect.size.width = circleDiameter * scaleFactor
+                    rect.size.height = circleDiameter * scaleFactor
+                    rect.origin.x = pt.x - circleRadius * scaleFactor
+                    rect.origin.y = pt.y - circleRadius * scaleFactor
+                    
+                    context.fillEllipse(in: rect)
+                }
+            }
+        }
+        
+        context.restoreGState()
+    }
+    
+    private func drawGradientLine(context : CGContext, dataSet: ILineChartDataSet, spline: CGPath, matrix: CGAffineTransform) {
         guard let dataSet = dataSet as? GradientLineChartDataSet, dataSet.gradientEnabled, let viewPortHandler = viewPortHandler, let gradients = dataSet.gradients else {
             return
         }
@@ -865,8 +844,28 @@ public class GradientLineChartRenderer: LineRadarRenderer {
         context.restoreGState()
     }
     
+    /// Generates the path that is used for gradient drawing.
+    private func generatePath(dataSet: ILineChartDataSet, fillMin: CGFloat, from: Int, to: Int, matrix: CGAffineTransform) -> CGPath {
+        let phaseX = CGFloat(animator?.phaseX ?? 0)
+        let phaseY = CGFloat(animator?.phaseY ?? 0)
+        
+        var e: ChartDataEntry!
+        
+        let generatedPath = CGMutablePath()
+        e = dataSet.entryForIndex(from)
+        if e != nil {
+            generatedPath.move(to: CGPoint(x: CGFloat(e.x), y: CGFloat(e.y) * phaseY), transform: matrix)
+        }
+        // create a new path
+        for _ in from + 1...Int(ceil(CGFloat(to - from) * phaseX + CGFloat(from)))  {
+            guard let e = dataSet.entryForIndex(from) else { continue }
+            generatedPath.move(to: CGPoint(x: CGFloat(e.x), y: CGFloat(e.y) * phaseY), transform: matrix)
+        }
+        return generatedPath
+    }
+    
     /// - returns: `true` if the DataSet values should be drawn, `false` if not.
-    internal func shouldDrawValues(forDataSet set: IChartDataSet) -> Bool {
+    private func shouldDrawValues(forDataSet set: IChartDataSet) -> Bool {
         return set.isVisible && (set.isDrawValuesEnabled || set.isDrawIconsEnabled)
     }
 }
@@ -892,22 +891,4 @@ extension BarLineScatterCandleBubbleRenderer {
     }
 }
 
-private extension GradientLineChartRenderer {
-    func interpolate(xValue: Double, dataSet: LineChartDataSet) -> Double? {
-
-        let phaseY = animator?.phaseY ?? 1
-        for i in 0..<dataSet.entryCount {
-            if dataSet.values[i].x >= xValue {
-                let nextIndex = i + 1 < dataSet.entryCount ? i + 1 : i
-                let cur = dataSet.values[i]
-                let next = dataSet.values[nextIndex]
-                
-                // return linear interpolation
-                return abs((xValue - cur.x) / (next.x - cur.x) * (next.y * phaseY - cur.y * phaseY) + cur.y * phaseY)
-            }
-        }
-        return nil
-    }
-    
-}
 

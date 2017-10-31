@@ -21,6 +21,8 @@ import UIKit
 import Charts
 
 class StackableChartView: CombinedChartView {
+    let conditionMarker = ConditionChartMarker.viewFromXib() as? ConditionChartMarker
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         style()
@@ -35,6 +37,14 @@ class StackableChartView: CombinedChartView {
         styleAxis()
         leftAxis.axisMaximum = 500
         
+        // init marker
+        conditionMarker?.gradients = K.Colors.gradients
+        conditionMarker?.chartView = self
+        let marker = ActivityChartMarker.viewFromXib()
+        marker?.chartView = self
+        self.marker = marker
+        
+        // init data
         data = CombinedChartData(dataSet: nil)
         if !(combinedData?.bubbleData is StackableChartData) {
             combinedData?.bubbleData = StackableChartData(dataSets: nil, chartView:self)
@@ -47,31 +57,8 @@ class StackableChartView: CombinedChartView {
         }
     }
     
-    // Add stackable data
-    func setStackableDataSets(xAxisSet: [[Double]]) {
-        //TODO update this
-        var dataSets = [ChartDataSet]()
-        for xAxisValues in xAxisSet {
-            var xEntries = [StackableChartDataEntry]()
-            for xValue in xAxisValues {
-                let entry = StackableChartDataEntry(x: xValue, y: 50, size: 20)
-                entry.highlightedIcon = UIImage(named: "icon")
-                entry.icon = UIImage(named: "icon")
-                entry.highlightedMultipler = 1.5
-//                entry.timeSpan = 450 // in minute
-                entry.label = "test"
-                entry.highlightEnabled = arc4random_uniform(100) % 2 == 0 // indicate whether the chart should highlight 
-                xEntries.append(entry)
-            }
-            // todo add label
-            let set = BubbleChartDataSet(values: xEntries, label: "Bubble")
-            set.setColor(UIColor.white)
-            set.drawValuesEnabled = false
-            set.drawIconsEnabled = false
-            dataSets.append(set)
-        }
-        
-        if let data = combinedData?.bubbleData as? StackableChartData {
+    func setStackableDataSets(dataSets: [BubbleChartDataSet]) {
+       if let data = combinedData?.bubbleData as? StackableChartData {
             data.contentTopPosition = leftAxis.axisMaximum
             data.contentBottomPosition = leftAxis.axisMinimum + 110
             data.setValueTextColor(UIColor.white)
@@ -80,28 +67,15 @@ class StackableChartView: CombinedChartView {
         notifyDataSetChanged()
     }
     
-    // x axis is in minute from timeIntervalSinceReferenceDate
-    func setLineChartData(entries: [ChartDataEntry]) {
-        //TODO
-        if let dataCount = lineData?.dataSets.count, dataCount > 0 {
-            let set1 = data!.dataSets[0] as! GradientLineChartDataSet
-            set1.values = entries
+    func setLineChartDataSet(dataSet: GradientLineChartDataSet) {
+        if let dataCount = lineData?.dataSets.count, dataCount > 0, let set1 = data?.dataSets[0] as? GradientLineChartDataSet {
+            set1.values = dataSet.values
             moveViewToX(set1.xMax)
             data?.notifyDataChanged()
             notifyDataSetChanged()
         } else {
-            let set1 = GradientLineChartDataSet(values: entries, label: "CONDITION")
-            set1.highlightEnabled = false
-            set1.drawIconsEnabled = false
-            set1.drawValuesEnabled = false
-            set1.drawCirclesEnabled = false
-            set1.lineWidth = 2.0
-            set1.circleRadius = 3.0
-            set1.gradients = K.Colors.gradients
-            set1.mode = .horizontalBezier
-            set1.valueColors = [UIColor.white]
-            moveViewToX(set1.xMax)
-            combinedData?.lineData = GradientLineChartData(dataSets: [set1], chartView: self)
+            moveViewToX(dataSet.xMax)
+            combinedData?.lineData = GradientLineChartData(dataSets: [dataSet], chartView: self)
         }
     }
     
@@ -113,5 +87,36 @@ class StackableChartView: CombinedChartView {
         }
     }
    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        drawConditionMarker()
+    }
+    
+    private func drawConditionMarker() {
+        guard valuesToHighlight(), let highlight = highlighted.first, let dataSets = lineData?.dataSets, let renderer = renderer as? StackableCombinedChartRenderer, let gRenderer = renderer.gradientLineRenderer() else {
+            return
+        }
+        let optionalContext = UIGraphicsGetCurrentContext()
+        guard let context = optionalContext else { return }
+        context.addRect(viewPortHandler.contentRect)
+        context.clip()
+        
+        for dataSet in dataSets {
+            if let dataSet = dataSet as? GradientLineChartDataSet, let yValue = gRenderer.interpolate(xValue: highlight.x, dataSet: dataSet) {
+                var point = CGPoint(x: highlight.x, y: yValue)
+                let entry = ChartDataEntry(x: highlight.x, y: yValue)
+                let h = Highlight(x: highlight.x, y: yValue, dataSetIndex: -1)
+                
+                point = point.applying(getTransformer(forAxis: dataSet.axisDependency
+                    ).valueToPixelMatrix)
+                if !viewPortHandler.isInBounds(x: point.x, y: point.y) {
+                    continue
+                }
+                h.setDraw(pt: point)
+                conditionMarker?.refreshContent(entry: entry, highlight: h)
+                conditionMarker?.draw(context: context, point: point)
+            }
+        }
+    }
 }
 

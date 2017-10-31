@@ -13,19 +13,60 @@ class CombinedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initStackableChart()
+        initConditionChart()
+    }
+    
+    private func initStackableChart() {
         let dates = Date().oneMonthArray()
         var dateSet = [[Double]]()
         for _ in 0...2 {
             dateSet.append(dates)
         }
-        chartView.setStackableDataSets(xAxisSet: dateSet)
         
+        var dataSets = [BubbleChartDataSet]()
+        for xAxisValues in dateSet {
+            var xEntries = [StackableChartDataEntry]()
+            for xValue in xAxisValues {
+                let entry = StackableChartDataEntry(x: xValue, y: 50, size: 20)
+                entry.highlightedIcon = UIImage(named: "icon")
+                entry.icon = UIImage(named: "icon")
+                entry.highlightedMultipler = 1.5
+                //                entry.timeSpan = 450 // in minute
+                entry.label = "test"
+                entry.highlightEnabled = arc4random_uniform(100) % 2 == 0 // indicate whether the chart should highlight
+                xEntries.append(entry)
+            }
+            // todo add label
+            let set = BubbleChartDataSet(values: xEntries, label: "Bubble")
+            set.setColor(UIColor.white)
+            set.drawValuesEnabled = false
+            set.drawIconsEnabled = false
+            dataSets.append(set)
+        }
+        
+        chartView.setStackableDataSets(dataSets: dataSets)
+    }
+    
+    private func initConditionChart() {
         let dateArray = Date().oneMonthArray();
-        var entries = Array<ChartDataEntry>()
+        var entries = [ChartDataEntry]()
         for time in dateArray {
             entries.append(ChartDataEntry(x: time, y: Double(arc4random_uniform(100))))
         }
+        
+        let set1 = GradientLineChartDataSet(values: entries, label: "CONDITION")
+        set1.highlightEnabled = false
+        set1.drawIconsEnabled = false
+        set1.drawValuesEnabled = false
+        set1.drawCirclesEnabled = false
+        set1.lineWidth = 2.0
+        set1.circleRadius = 3.0
+        set1.gradients = K.Colors.gradients
+        set1.mode = .horizontalBezier
+        set1.valueColors = [UIColor.white]
+        
         // date is in minute from timeIntervalSinceReferenceDate
-        chartView.setLineChartData(entries: entries)
+        chartView.setLineChartDataSet(dataSet: set1)
     }
 }
