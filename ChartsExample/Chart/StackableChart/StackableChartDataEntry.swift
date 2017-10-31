@@ -11,7 +11,7 @@ import Charts
 
 class StackableChartDataEntry: BubbleChartDataEntry {
     var timeSpan: Double? // time in minute
-    var colors: [UIColor]? // gradient color
+    var colors: [UIColor] = [UIColor.white] // gradient color from left to right
     var highlightedMultipler: CGFloat = 1.2
     var highlightedIcon: NSUIImage?
     var label: String?

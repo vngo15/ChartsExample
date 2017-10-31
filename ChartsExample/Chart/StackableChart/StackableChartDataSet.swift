@@ -15,4 +15,16 @@ class StackableChartDataSet: BubbleChartDataSet {
             scheduledDataSet?.highlightEnabled = false
         }
     }
+    
+    @available(*, deprecated: 1.0, message: "Use StackableChartDataEntry.colors instead")
+    override func setColor(_ color: NSUIColor) {}
+    
+    @available(*, deprecated: 1.0, message: "Use StackableChartDataEntry.colors instead")
+    override func setColor(_ color: NSUIColor, alpha: CGFloat) {}
+    
+    @available(*, deprecated: 1.0, message: "Use StackableChartDataEntry.colors instead")
+    override func setColors(_ colors: NSUIColor...) {}
+    
+    @available(*, deprecated: 1.0, message: "Use StackableChartDataEntry.colors instead")
+    override func setColors(_ colors: [NSUIColor], alpha: CGFloat) {}
 }

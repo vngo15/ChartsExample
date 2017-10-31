@@ -54,29 +54,34 @@ class StackableChartRenderer: BubbleChartRenderer {
                                      y: rect.origin.y + rect.width / 2, // Add offset back from ChartUtils.drawImage
                                      size: rect.size)
             } else {
-                let color = dataSet.color(atIndex: Int(entry.x))
+                guard let color = entry.colors.first else { continue }
                 color.setFill()
-                context.setStrokeColor(color.cgColor)
+                context.setFillColor(color.cgColor)
                 let path = UIBezierPath(roundedRect: rect, cornerRadius: rect.height)
-                path.fill()
+                context.addPath(path.cgPath)
+                context.fillPath()
+                
                 // applying gradient
-                if entry.colors != nil, let gradient = entry.colors?.gradient() {
+                if let gradient = entry.colors.gradient() {
                     context.addPath(path.cgPath)
                     context.clip()
                     context.drawLinearGradient(gradient,
                                                start: CGPoint(x: rect.origin.x, y: rect.origin.y),
                                                end: CGPoint(x: rect.origin.x + rect.width, y: rect.origin.y),
                                                options: CGGradientDrawingOptions(rawValue: 0))
-                   context.resetClip()
+                    context.resetClip()
+                    context.clip(to: viewPortHandler.contentRect)
                 }
                 
                 if let strokeColor = entry.strokeColor {
+                    context.addPath(path.cgPath)
                     context.setStrokeColor(strokeColor.cgColor)
-                    path.stroke()
+                    context.strokePath()
                 }
+                
             }
         }
-        
+
         context.restoreGState()
         // Draw label on top of the data set
         var labelOffset = 0.0
@@ -132,12 +137,12 @@ class StackableChartRenderer: BubbleChartRenderer {
                                      y: rect.origin.y + rect.width / 2, // Add offset back from ChartUtils.drawImage
                                      size: rect.size)
             } else { // draw color
-                let color = dataSet.color(atIndex: Int(entry.x))
+                guard let color = entry.colors.first else { continue }
                 context.setStrokeColor(color.cgColor)
                 let path = UIBezierPath(roundedRect: rect, cornerRadius: rect.height)
                 path.fill()
                 // applying gradient
-                if entry.colors != nil, let gradient = entry.colors?.gradient() {
+                if let gradient = entry.colors.gradient() {
                     context.addPath(path.cgPath)
                     context.clip()
                     context.drawLinearGradient(gradient,
