@@ -15,7 +15,7 @@ class StackableChartDataEntry: BubbleChartDataEntry {
     var highlightedMultipler: CGFloat = 1.2
     var highlightedIcon: NSUIImage?
     var label: String?
-    var highlightEnabled = true
+    var strokeColor: UIColor?
     
     init(x: Double, y: Double, size: CGFloat, timeSpan: Double? = nil, icon: NSUIImage? = nil, highlightedIcon: NSUIImage? = nil, data: AnyObject? = nil) {
         super.init(x: x, y: y, size: size, icon: icon, data: data)

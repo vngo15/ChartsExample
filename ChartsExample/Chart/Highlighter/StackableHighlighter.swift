@@ -61,9 +61,6 @@ class StackableHighlighter: ChartHighlighter {
         }
         
         for e in entries {
-            if let entry = e as? StackableChartDataEntry, !entry.highlightEnabled {
-                continue
-            }
             let px = chart.getTransformer(forAxis: set.axisDependency).pixelForValues(x: e.x, y: e.y)
             
             highlights.append(Highlight(x: e.x, y: e.y, xPx: px.x, yPx: px.y, dataSetIndex: dataSetIndex, axis: set.axisDependency))

@@ -24,24 +24,34 @@ class CombinedViewController: UIViewController {
             dateSet.append(dates)
         }
         
-        var dataSets = [BubbleChartDataSet]()
+        var dataSets = [StackableChartDataSet]()
         for xAxisValues in dateSet {
             var xEntries = [StackableChartDataEntry]()
             for xValue in xAxisValues {
-                let entry = StackableChartDataEntry(x: xValue, y: 50, size: 20)
+                let entry = StackableChartDataEntry(x: xValue, y: 50, size: 10)
                 entry.highlightedIcon = UIImage(named: "icon")
                 entry.icon = UIImage(named: "icon")
                 entry.highlightedMultipler = 1.5
                 //                entry.timeSpan = 450 // in minute
                 entry.label = "test"
-                entry.highlightEnabled = arc4random_uniform(100) % 2 == 0 // indicate whether the chart should highlight
                 xEntries.append(entry)
             }
             // todo add label
-            let set = BubbleChartDataSet(values: xEntries, label: "Bubble")
+            let set = StackableChartDataSet(values: xEntries, label: "Bubble")
             set.setColor(UIColor.white)
             set.drawValuesEnabled = false
             set.drawIconsEnabled = false
+            
+            //scheduleTime
+            xEntries = [StackableChartDataEntry]()
+            for xValue in xAxisValues {
+                let entry = StackableChartDataEntry(x: xValue , y: 50, size: 15)
+                entry.strokeColor = UIColor.black
+                xEntries.append(entry)
+            }
+            let scheduled = StackableChartDataSet(values: xEntries, label: "")
+            scheduled.setColor(UIColor.black.withAlphaComponent(0.5))
+            set.scheduledDataSet = scheduled
             dataSets.append(set)
         }
         

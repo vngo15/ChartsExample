@@ -70,7 +70,7 @@ class StackableChartView: CombinedChartView {
         }
     }
     
-    func setStackableDataSets(dataSets: [BubbleChartDataSet]) {
+    func setStackableDataSets(dataSets: [StackableChartDataSet]) {
        if let data = combinedData?.bubbleData as? StackableChartData {
             data.contentTopPosition = leftAxis.axisMaximum
             data.contentBottomPosition = leftAxis.axisMinimum + 110

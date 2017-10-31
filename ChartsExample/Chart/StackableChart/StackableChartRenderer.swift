@@ -21,8 +21,13 @@ class StackableChartRenderer: BubbleChartRenderer {
         let trans = dataProvider.getTransformer(forAxis: dataSet.axisDependency)
         let valueToPixelMatrix = trans.valueToPixelMatrix
         var pointBuffer = CGPoint()
-        context.saveGState()
         
+        if let sDataSet = dataSet as? StackableChartDataSet, let scheduled = sDataSet.scheduledDataSet {
+            // recursive call
+            drawDataSet(context: context, dataSet: scheduled)
+        }
+        
+        context.saveGState()
         for j in stride(from: xBounds.min, through: xBounds.range + xBounds.min, by: 1) {
             guard let entry = dataSet.entryForIndex(j) as? StackableChartDataEntry else { continue }
             let rect = getRect(forEntry: entry, animator: animator, transform: valueToPixelMatrix)
@@ -63,6 +68,11 @@ class StackableChartRenderer: BubbleChartRenderer {
                                                end: CGPoint(x: rect.origin.x + rect.width, y: rect.origin.y),
                                                options: CGGradientDrawingOptions(rawValue: 0))
                    context.resetClip()
+                }
+                
+                if let strokeColor = entry.strokeColor {
+                    context.setStrokeColor(strokeColor.cgColor)
+                    path.stroke()
                 }
             }
         }

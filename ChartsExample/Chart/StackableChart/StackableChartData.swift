@@ -17,7 +17,7 @@ class StackableChartData: BubbleChartData {
         return chartView != nil ? chartView!.valuesToHighlight() : false
     }
     
-    init(dataSets: [IChartDataSet]?, chartView: ChartViewBase? = nil) {
+    init(dataSets: [StackableChartDataSet]?, chartView: ChartViewBase? = nil) {
         super.init(dataSets: dataSets)
         self.dataSets = dataSets ?? [IChartDataSet]()
         self.chartView = chartView
@@ -26,7 +26,7 @@ class StackableChartData: BubbleChartData {
     override var dataSets: [IChartDataSet] {
         didSet {
             // calculate and normalized all the data
-            guard let dataSets = dataSets as? [ChartDataSet] else {
+            guard let dataSets = dataSets as? [StackableChartDataSet] else {
                 return
             }
             let count = dataSets.count
@@ -34,6 +34,7 @@ class StackableChartData: BubbleChartData {
             var normalizedPosition = contentBottomPosition + deltaY
             for dataSet in dataSets {
                 dataSet.normalizeData(toY: normalizedPosition)
+                dataSet.scheduledDataSet?.normalizeData(toY: normalizedPosition)
                 normalizedPosition += deltaY
             }
             notifyDataChanged()
