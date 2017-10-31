@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		103CC2D01FA39E3500C9D88E /* StackableChartDataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CC2CF1FA39E3500C9D88E /* StackableChartDataEntry.swift */; };
+		103CC2D21FA3BC2D00C9D88E /* GradientLineChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CC2D11FA3BC2D00C9D88E /* GradientLineChartData.swift */; };
+		103CC2D51FA3F2F700C9D88E /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CC2D41FA3F2F700C9D88E /* UIImage+Helper.swift */; };
+		107096E31F99139900FBBB03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107096E21F99139900FBBB03 /* AppDelegate.swift */; };
+		107096E51F99139900FBBB03 /* ConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107096E41F99139900FBBB03 /* ConditionViewController.swift */; };
+		107096E81F99139900FBBB03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107096E61F99139900FBBB03 /* Main.storyboard */; };
+		107096EA1F99139900FBBB03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107096E91F99139900FBBB03 /* Assets.xcassets */; };
+		107096ED1F99139900FBBB03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107096EB1F99139900FBBB03 /* LaunchScreen.storyboard */; };
+		107096F51F9913B000FBBB03 /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = 107096F41F9913B000FBBB03 /* podfile */; };
+		107096F71F99172200FBBB03 /* DateAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107096F61F99172200FBBB03 /* DateAxisFormatter.swift */; };
+		107096FB1F991D6F00FBBB03 /* ConditionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107096FA1F991D6F00FBBB03 /* ConditionChartView.swift */; };
+		107096FD1F991ED200FBBB03 /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107096FC1F991ED200FBBB03 /* Date+Helper.swift */; };
+		107097031F993F7800FBBB03 /* GradientLineChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107097021F993F7800FBBB03 /* GradientLineChartRenderer.swift */; };
+		108292021FA0F68E00D45E5D /* StackableChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108292011FA0F68E00D45E5D /* StackableChartData.swift */; };
+		108292071FA105E900D45E5D /* BaseChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108292061FA105E900D45E5D /* BaseChartView.swift */; };
+		1082920C1FA1270300D45E5D /* StackableChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082920B1FA1270300D45E5D /* StackableChartRenderer.swift */; };
+		108292111FA1459600D45E5D /* CombinedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108292101FA1459600D45E5D /* CombinedViewController.swift */; };
+		108292141FA149CA00D45E5D /* StackableChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108292131FA149CA00D45E5D /* StackableChartView.swift */; };
+		10BBE6A61F9E4D7B00FAD669 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBE6A51F9E4D7B00FAD669 /* Constant.swift */; };
+		10C192EA1FA7B27B00FCA04D /* StackableCombinedChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C192E91FA7B27B00FCA04D /* StackableCombinedChartRenderer.swift */; };
+		10C192ED1FA7C28500FCA04D /* StackableHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C192EC1FA7C28500FCA04D /* StackableHighlighter.swift */; };
+		10C192EF1FA7C8B900FCA04D /* CGPath+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C192EE1FA7C8B900FCA04D /* CGPath+Helper.swift */; };
+		10DAC5E21F9E68B100D293E7 /* InsightXAxisRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DAC5E11F9E68B100D293E7 /* InsightXAxisRenderer.swift */; };
+		10DAC5E41F9E82E500D293E7 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DAC5E31F9E82E500D293E7 /* UIColor+Helper.swift */; };
+		10DAC5E61F9E8E0700D293E7 /* ConditionChartMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DAC5E51F9E8E0700D293E7 /* ConditionChartMarker.swift */; };
+		10DAC5E91F9E8F6B00D293E7 /* ConditionChartMarker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DAC5E81F9E8F6B00D293E7 /* ConditionChartMarker.xib */; };
+		10E1F61B1F9EA1A1008DBFE7 /* ValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1F61A1F9EA1A1008DBFE7 /* ValueFormatter.swift */; };
+		10E1F61D1F9EA24B008DBFE7 /* Array+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1F61C1F9EA24B008DBFE7 /* Array+Helper.swift */; };
+		10E1F6201F9EC36F008DBFE7 /* GradientLineChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1F61F1F9EC36F008DBFE7 /* GradientLineChartDataSet.swift */; };
+		A327F148A5CDD8DBEC410B56 /* Pods_ChartsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272998D36AC54628B7C754C9 /* Pods_ChartsExample.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		103CC2CF1FA39E3500C9D88E /* StackableChartDataEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackableChartDataEntry.swift; sourceTree = "<group>"; };
+		103CC2D11FA3BC2D00C9D88E /* GradientLineChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLineChartData.swift; sourceTree = "<group>"; };
+		103CC2D41FA3F2F700C9D88E /* UIImage+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
+		107096DF1F99139900FBBB03 /* ChartsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChartsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		107096E21F99139900FBBB03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		107096E41F99139900FBBB03 /* ConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionViewController.swift; sourceTree = "<group>"; };
+		107096E71F99139900FBBB03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		107096E91F99139900FBBB03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		107096EC1F99139900FBBB03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		107096EE1F99139900FBBB03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		107096F41F9913B000FBBB03 /* podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
+		107096F61F99172200FBBB03 /* DateAxisFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAxisFormatter.swift; sourceTree = "<group>"; };
+		107096FA1F991D6F00FBBB03 /* ConditionChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionChartView.swift; sourceTree = "<group>"; };
+		107096FC1F991ED200FBBB03 /* Date+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
+		107097021F993F7800FBBB03 /* GradientLineChartRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLineChartRenderer.swift; sourceTree = "<group>"; };
+		108292011FA0F68E00D45E5D /* StackableChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackableChartData.swift; sourceTree = "<group>"; };
+		108292061FA105E900D45E5D /* BaseChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChartView.swift; sourceTree = "<group>"; };
+		1082920B1FA1270300D45E5D /* StackableChartRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackableChartRenderer.swift; sourceTree = "<group>"; };
+		108292101FA1459600D45E5D /* CombinedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedViewController.swift; sourceTree = "<group>"; };
+		108292131FA149CA00D45E5D /* StackableChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackableChartView.swift; sourceTree = "<group>"; };
+		10BBE6A51F9E4D7B00FAD669 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		10C192E91FA7B27B00FCA04D /* StackableCombinedChartRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackableCombinedChartRenderer.swift; sourceTree = "<group>"; };
+		10C192EC1FA7C28500FCA04D /* StackableHighlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackableHighlighter.swift; sourceTree = "<group>"; };
+		10C192EE1FA7C8B900FCA04D /* CGPath+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+Helper.swift"; sourceTree = "<group>"; };
+		10DAC5E11F9E68B100D293E7 /* InsightXAxisRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightXAxisRenderer.swift; sourceTree = "<group>"; };
+		10DAC5E31F9E82E500D293E7 /* UIColor+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helper.swift"; sourceTree = "<group>"; };
+		10DAC5E51F9E8E0700D293E7 /* ConditionChartMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionChartMarker.swift; sourceTree = "<group>"; };
+		10DAC5E81F9E8F6B00D293E7 /* ConditionChartMarker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConditionChartMarker.xib; sourceTree = "<group>"; };
+		10E1F61A1F9EA1A1008DBFE7 /* ValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatter.swift; sourceTree = "<group>"; };
+		10E1F61C1F9EA24B008DBFE7 /* Array+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Helper.swift"; sourceTree = "<group>"; };
+		10E1F61F1F9EC36F008DBFE7 /* GradientLineChartDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLineChartDataSet.swift; sourceTree = "<group>"; };
+		272998D36AC54628B7C754C9 /* Pods_ChartsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChartsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		833262FA09DAC8DD0C2155AF /* Pods-ChartsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChartsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChartsExample/Pods-ChartsExample.debug.xcconfig"; sourceTree = "<group>"; };
+		B1EFBC8F25D5E94F4B60B2A4 /* Pods-ChartsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChartsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChartsExample/Pods-ChartsExample.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		107096DC1F99139900FBBB03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A327F148A5CDD8DBEC410B56 /* Pods_ChartsExample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		02B35261BC843CF5149C6F9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				272998D36AC54628B7C754C9 /* Pods_ChartsExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		107096D61F99139900FBBB03 = {
+			isa = PBXGroup;
+			children = (
+				107096F41F9913B000FBBB03 /* podfile */,
+				107096E11F99139900FBBB03 /* ChartsExample */,
+				107096E01F99139900FBBB03 /* Products */,
+				A02EDCB0CAC9BA72AFADC572 /* Pods */,
+				02B35261BC843CF5149C6F9F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		107096E01F99139900FBBB03 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				107096DF1F99139900FBBB03 /* ChartsExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		107096E11F99139900FBBB03 /* ChartsExample */ = {
+			isa = PBXGroup;
+			children = (
+				108745081FA246AA00357ACF /* Chart */,
+				1082920A1FA125FB00D45E5D /* ViewController */,
+				10BBE6A71F9E4E5B00FAD669 /* Extension */,
+				107096E21F99139900FBBB03 /* AppDelegate.swift */,
+				10BBE6A51F9E4D7B00FAD669 /* Constant.swift */,
+				107096E61F99139900FBBB03 /* Main.storyboard */,
+				107096E91F99139900FBBB03 /* Assets.xcassets */,
+				107096EB1F99139900FBBB03 /* LaunchScreen.storyboard */,
+				107096EE1F99139900FBBB03 /* Info.plist */,
+			);
+			path = ChartsExample;
+			sourceTree = "<group>";
+		};
+		1082920A1FA125FB00D45E5D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				107096E41F99139900FBBB03 /* ConditionViewController.swift */,
+				108292101FA1459600D45E5D /* CombinedViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		108745061FA2465D00357ACF /* GradientLineChart */ = {
+			isa = PBXGroup;
+			children = (
+				107097021F993F7800FBBB03 /* GradientLineChartRenderer.swift */,
+				10E1F61F1F9EC36F008DBFE7 /* GradientLineChartDataSet.swift */,
+				103CC2D11FA3BC2D00C9D88E /* GradientLineChartData.swift */,
+			);
+			path = GradientLineChart;
+			sourceTree = "<group>";
+		};
+		108745071FA2467300357ACF /* StackableChart */ = {
+			isa = PBXGroup;
+			children = (
+				1082920B1FA1270300D45E5D /* StackableChartRenderer.swift */,
+				108292011FA0F68E00D45E5D /* StackableChartData.swift */,
+				103CC2CF1FA39E3500C9D88E /* StackableChartDataEntry.swift */,
+				10C192E91FA7B27B00FCA04D /* StackableCombinedChartRenderer.swift */,
+			);
+			path = StackableChart;
+			sourceTree = "<group>";
+		};
+		108745081FA246AA00357ACF /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				10C192EB1FA7C27400FCA04D /* Highlighter */,
+				10BBE6A81F9E4E6700FAD669 /* ChartView */,
+				10DAC5EA1F9E91EA00D293E7 /* Marker */,
+				108745091FA246B300357ACF /* Base */,
+				108745071FA2467300357ACF /* StackableChart */,
+				108745061FA2465D00357ACF /* GradientLineChart */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		108745091FA246B300357ACF /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				10E1F6181F9E9C5E008DBFE7 /* Formatter */,
+				10E1F6191F9E9C71008DBFE7 /* Renderer */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		10BBE6A71F9E4E5B00FAD669 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				107096FC1F991ED200FBBB03 /* Date+Helper.swift */,
+				10DAC5E31F9E82E500D293E7 /* UIColor+Helper.swift */,
+				10E1F61C1F9EA24B008DBFE7 /* Array+Helper.swift */,
+				103CC2D41FA3F2F700C9D88E /* UIImage+Helper.swift */,
+				10C192EE1FA7C8B900FCA04D /* CGPath+Helper.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		10BBE6A81F9E4E6700FAD669 /* ChartView */ = {
+			isa = PBXGroup;
+			children = (
+				107096FA1F991D6F00FBBB03 /* ConditionChartView.swift */,
+				108292131FA149CA00D45E5D /* StackableChartView.swift */,
+				108292061FA105E900D45E5D /* BaseChartView.swift */,
+			);
+			path = ChartView;
+			sourceTree = "<group>";
+		};
+		10C192EB1FA7C27400FCA04D /* Highlighter */ = {
+			isa = PBXGroup;
+			children = (
+				10C192EC1FA7C28500FCA04D /* StackableHighlighter.swift */,
+			);
+			path = Highlighter;
+			sourceTree = "<group>";
+		};
+		10DAC5EA1F9E91EA00D293E7 /* Marker */ = {
+			isa = PBXGroup;
+			children = (
+				10DAC5E51F9E8E0700D293E7 /* ConditionChartMarker.swift */,
+				10DAC5E81F9E8F6B00D293E7 /* ConditionChartMarker.xib */,
+			);
+			path = Marker;
+			sourceTree = "<group>";
+		};
+		10E1F6181F9E9C5E008DBFE7 /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				107096F61F99172200FBBB03 /* DateAxisFormatter.swift */,
+				10E1F61A1F9EA1A1008DBFE7 /* ValueFormatter.swift */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
+		10E1F6191F9E9C71008DBFE7 /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				10DAC5E11F9E68B100D293E7 /* InsightXAxisRenderer.swift */,
+			);
+			path = Renderer;
+			sourceTree = "<group>";
+		};
+		A02EDCB0CAC9BA72AFADC572 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				833262FA09DAC8DD0C2155AF /* Pods-ChartsExample.debug.xcconfig */,
+				B1EFBC8F25D5E94F4B60B2A4 /* Pods-ChartsExample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		107096DE1F99139900FBBB03 /* ChartsExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 107096F11F99139900FBBB03 /* Build configuration list for PBXNativeTarget "ChartsExample" */;
+			buildPhases = (
+				8151B20D2EE353F9FFBBD3D1 /* [CP] Check Pods Manifest.lock */,
+				107096DB1F99139900FBBB03 /* Sources */,
+				107096DC1F99139900FBBB03 /* Frameworks */,
+				107096DD1F99139900FBBB03 /* Resources */,
+				346D7502B30FF11C6630D472 /* [CP] Embed Pods Frameworks */,
+				C79A491925408620FF403185 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChartsExample;
+			productName = ChartsExample;
+			productReference = 107096DF1F99139900FBBB03 /* ChartsExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		107096D71F99139900FBBB03 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Vincent Ngo";
+				TargetAttributes = {
+					107096DE1F99139900FBBB03 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 107096DA1F99139900FBBB03 /* Build configuration list for PBXProject "ChartsExample" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 107096D61F99139900FBBB03;
+			productRefGroup = 107096E01F99139900FBBB03 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				107096DE1F99139900FBBB03 /* ChartsExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		107096DD1F99139900FBBB03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				107096ED1F99139900FBBB03 /* LaunchScreen.storyboard in Resources */,
+				107096EA1F99139900FBBB03 /* Assets.xcassets in Resources */,
+				107096F51F9913B000FBBB03 /* podfile in Resources */,
+				107096E81F99139900FBBB03 /* Main.storyboard in Resources */,
+				10DAC5E91F9E8F6B00D293E7 /* ConditionChartMarker.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		346D7502B30FF11C6630D472 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ChartsExample/Pods-ChartsExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChartsExample/Pods-ChartsExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8151B20D2EE353F9FFBBD3D1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ChartsExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C79A491925408620FF403185 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChartsExample/Pods-ChartsExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		107096DB1F99139900FBBB03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				103CC2D21FA3BC2D00C9D88E /* GradientLineChartData.swift in Sources */,
+				10BBE6A61F9E4D7B00FAD669 /* Constant.swift in Sources */,
+				10C192ED1FA7C28500FCA04D /* StackableHighlighter.swift in Sources */,
+				10E1F61B1F9EA1A1008DBFE7 /* ValueFormatter.swift in Sources */,
+				10C192EA1FA7B27B00FCA04D /* StackableCombinedChartRenderer.swift in Sources */,
+				103CC2D01FA39E3500C9D88E /* StackableChartDataEntry.swift in Sources */,
+				10C192EF1FA7C8B900FCA04D /* CGPath+Helper.swift in Sources */,
+				103CC2D51FA3F2F700C9D88E /* UIImage+Helper.swift in Sources */,
+				107096E51F99139900FBBB03 /* ConditionViewController.swift in Sources */,
+				1082920C1FA1270300D45E5D /* StackableChartRenderer.swift in Sources */,
+				10E1F61D1F9EA24B008DBFE7 /* Array+Helper.swift in Sources */,
+				10E1F6201F9EC36F008DBFE7 /* GradientLineChartDataSet.swift in Sources */,
+				108292071FA105E900D45E5D /* BaseChartView.swift in Sources */,
+				108292021FA0F68E00D45E5D /* StackableChartData.swift in Sources */,
+				107096FD1F991ED200FBBB03 /* Date+Helper.swift in Sources */,
+				107097031F993F7800FBBB03 /* GradientLineChartRenderer.swift in Sources */,
+				10DAC5E61F9E8E0700D293E7 /* ConditionChartMarker.swift in Sources */,
+				108292141FA149CA00D45E5D /* StackableChartView.swift in Sources */,
+				107096F71F99172200FBBB03 /* DateAxisFormatter.swift in Sources */,
+				10DAC5E41F9E82E500D293E7 /* UIColor+Helper.swift in Sources */,
+				107096E31F99139900FBBB03 /* AppDelegate.swift in Sources */,
+				108292111FA1459600D45E5D /* CombinedViewController.swift in Sources */,
+				107096FB1F991D6F00FBBB03 /* ConditionChartView.swift in Sources */,
+				10DAC5E21F9E68B100D293E7 /* InsightXAxisRenderer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		107096E61F99139900FBBB03 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				107096E71F99139900FBBB03 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		107096EB1F99139900FBBB03 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				107096EC1F99139900FBBB03 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		107096EF1F99139900FBBB03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		107096F01F99139900FBBB03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		107096F21F99139900FBBB03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 833262FA09DAC8DD0C2155AF /* Pods-ChartsExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ChartsExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swensonhe.ChartsExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		107096F31F99139900FBBB03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1EFBC8F25D5E94F4B60B2A4 /* Pods-ChartsExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ChartsExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swensonhe.ChartsExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		107096DA1F99139900FBBB03 /* Build configuration list for PBXProject "ChartsExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				107096EF1F99139900FBBB03 /* Debug */,
+				107096F01F99139900FBBB03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		107096F11F99139900FBBB03 /* Build configuration list for PBXNativeTarget "ChartsExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				107096F21F99139900FBBB03 /* Debug */,
+				107096F31F99139900FBBB03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 107096D71F99139900FBBB03 /* Project object */;
+}
