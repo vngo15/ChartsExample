@@ -12,12 +12,27 @@ import Charts
 class WaterIntakeChartData: BubbleChartData {
     var contentBottomPosition = -Double.greatestFiniteMagnitude
     var contentTopPosition = Double.greatestFiniteMagnitude
+    var normalizedY: Double {
+        return (contentTopPosition - contentBottomPosition) + contentBottomPosition
+    }
+    var normalizedYMax: Double {
+        if let values = (dataSets.first as? ChartDataSet)?.values as? [WaterIntakeChartDataEntry], let maxEntry = values.max() {
+            return normalizedY + maxEntry.normalizedHeight * Double(maxEntry.highlightedMultipler)
+        }
+        return 0
+    }
+    var normalizedYMin: Double {
+        if let values = (dataSets.first as? ChartDataSet)?.values as? [WaterIntakeChartDataEntry], let maxEntry = values.max() {
+            return normalizedY - maxEntry.normalizedHeight * Double(maxEntry.highlightedMultipler)
+        }
+        return 0
+    }
     weak var chartView: ChartViewBase?
     var isDataHighlighted: Bool {
         return chartView != nil ? chartView!.valuesToHighlight() : false
     }
     
-    init(dataSets: [BubbleChartDataSet]?, chartView: ChartViewBase? = nil) {
+    init(dataSets: [WaterIntakeChartDataSet]?, chartView: ChartViewBase? = nil) {
         super.init(dataSets: dataSets)
         self.dataSets = dataSets ?? [IChartDataSet]()
         self.chartView = chartView
@@ -25,7 +40,7 @@ class WaterIntakeChartData: BubbleChartData {
     
     override var dataSets: [IChartDataSet] {
         didSet {
-            guard dataSets is [BubbleChartDataSet], dataSets.count == 1, let dataSet = dataSets.first as? BubbleChartDataSet else {
+            guard dataSets is [WaterIntakeChartDataSet], dataSets.count == 1, let dataSet = dataSets.first as? WaterIntakeChartDataSet else {
                 return
             }
             dataSet.normalizeData(top: contentTopPosition, bottom: contentBottomPosition)

@@ -11,7 +11,8 @@ import Charts
 
 class WaterIntakeChartView: CombinedChartView {
     lazy var headerLabel: UILabel? = UILabel()
-    let conditionMarker = ConditionChartMarker.viewFromXib() as? ConditionChartMarker
+    lazy var conditionMarker = ConditionChartMarker.viewFromXib() as? ConditionChartMarker
+    lazy var totalWaterMarker = WaterIntakeTotalMarker.viewFromXib() as? WaterIntakeTotalMarker
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,7 +38,7 @@ class WaterIntakeChartView: CombinedChartView {
         }
     }
     
-    func setWaterIntake(dataSet: BubbleChartDataSet) {
+    func setWaterIntake(dataSet: WaterIntakeChartDataSet) {
         if let data = combinedData?.bubbleData as? WaterIntakeChartData {
             data.contentTopPosition = leftAxis.axisMaximum
             data.contentBottomPosition = leftAxis.axisMinimum + 110
@@ -53,6 +54,7 @@ class WaterIntakeChartView: CombinedChartView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+        drawTotalIntakeMarker()
         drawConditionMarker()
     }
 }
@@ -65,6 +67,7 @@ private extension WaterIntakeChartView {
         // init marker
         conditionMarker?.gradients = K.Colors.gradients
         conditionMarker?.chartView = self
+        totalWaterMarker?.chartView = self
         let m = WaterIntakeMarker.viewFromXib()
         m?.chartView = self
         marker = m
@@ -108,10 +111,36 @@ private extension WaterIntakeChartView {
         }
     }
     
-    private func drawConditionMarker() {
-        guard valuesToHighlight(), let highlight = highlighted.first, let dataSets = lineData?.dataSets, let renderer = renderer as? StackableCombinedChartRenderer, let gRenderer = renderer.gradientLineRenderer() else {
+    private func drawTotalIntakeMarker() {
+        guard valuesToHighlight(),
+            let highlight = highlighted.first,
+            let data = bubbleData as? WaterIntakeChartData,
+            let dataSet = data.dataSets.first as? WaterIntakeChartDataSet,
+            let entries = dataSet.values as? [WaterIntakeChartDataEntry] else { return }
+        let total = entries.totalWaterIntake(forTime: highlight.x)
+        let y = (data.normalizedYMin - data.contentBottomPosition) / 2 + data.contentBottomPosition
+        
+        let optionalContext = UIGraphicsGetCurrentContext()
+        guard let context = optionalContext else { return }
+        context.addRect(viewPortHandler.contentRect)
+        context.clip()
+        var point = CGPoint(x: highlight.x, y: y)
+        let entry = WaterIntakeChartDataEntry(x: highlight.x, y: y, size: 0, count: total)
+        let h = Highlight(x: highlight.x, y: y, dataSetIndex: -1)
+        
+        point = point.applying(getTransformer(forAxis: .left
+            ).valueToPixelMatrix)
+        if !viewPortHandler.isInBounds(x: point.x, y: point.y) {
             return
         }
+        h.setDraw(pt: point)
+        totalWaterMarker?.refreshContent(entry: entry, highlight: h)
+        totalWaterMarker?.draw(context: context, point: point)
+    }
+    
+    private func drawConditionMarker() {
+        guard valuesToHighlight(), let highlight = highlighted.first, let dataSets = lineData?.dataSets, let renderer = renderer as? StackableCombinedChartRenderer, let gRenderer = renderer.gradientLineRenderer() else { return }
+        
         let optionalContext = UIGraphicsGetCurrentContext()
         guard let context = optionalContext else { return }
         context.addRect(viewPortHandler.contentRect)

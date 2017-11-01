@@ -276,8 +276,7 @@ public class GradientLineChartRenderer: LineRadarRenderer {
     }
     
     fileprivate var _lineSegments = [CGPoint](repeating: CGPoint(), count: 2)
-    
-    @objc open func drawLinear(context: CGContext, dataSet: ILineChartDataSet) {
+    open func drawLinear(context: CGContext, dataSet: ILineChartDataSet) {
         guard
             let dataProvider = dataProvider,
             let animator = animator,
@@ -431,44 +430,6 @@ public class GradientLineChartRenderer: LineRadarRenderer {
         } else {
             drawFilledPath(context: context, path: filled, fillColor: dataSet.fillColor, fillAlpha: dataSet.fillAlpha)
         }
-    }
-    
-    /// Generates the path that is used for filled drawing.
-    fileprivate func generateFilledPath(dataSet: ILineChartDataSet, fillMin: CGFloat, bounds: XBounds, matrix: CGAffineTransform) -> CGPath {
-        let phaseY = animator?.phaseY ?? 1.0
-        let isDrawSteppedEnabled = dataSet.mode == .stepped
-        let matrix = matrix
-        
-        var e: ChartDataEntry!
-        
-        let filled = CGMutablePath()
-        
-        e = dataSet.entryForIndex(bounds.min)
-        if e != nil {
-            filled.move(to: CGPoint(x: CGFloat(e.x), y: fillMin), transform: matrix)
-            filled.addLine(to: CGPoint(x: CGFloat(e.x), y: CGFloat(e.y * phaseY)), transform: matrix)
-        }
-        
-        // create a new path
-        for x in stride(from: (bounds.min + 1), through: bounds.range + bounds.min, by: 1) {
-            guard let e = dataSet.entryForIndex(x) else { continue }
-            
-            if isDrawSteppedEnabled {
-                guard let ePrev = dataSet.entryForIndex(x-1) else { continue }
-                filled.addLine(to: CGPoint(x: CGFloat(e.x), y: CGFloat(ePrev.y * phaseY)), transform: matrix)
-            }
-            
-            filled.addLine(to: CGPoint(x: CGFloat(e.x), y: CGFloat(e.y * phaseY)), transform: matrix)
-        }
-        
-        // close up
-        e = dataSet.entryForIndex(bounds.range + bounds.min)
-        if e != nil {
-            filled.addLine(to: CGPoint(x: CGFloat(e.x), y: fillMin), transform: matrix)
-        }
-        filled.closeSubpath()
-        
-        return filled
     }
     
     open override func drawValues(context: CGContext) {
@@ -691,6 +652,44 @@ public class GradientLineChartRenderer: LineRadarRenderer {
 }
 
 private extension GradientLineChartRenderer {
+    /// Generates the path that is used for filled drawing.
+    private func generateFilledPath(dataSet: ILineChartDataSet, fillMin: CGFloat, bounds: XBounds, matrix: CGAffineTransform) -> CGPath {
+        let phaseY = animator?.phaseY ?? 1.0
+        let isDrawSteppedEnabled = dataSet.mode == .stepped
+        let matrix = matrix
+        
+        var e: ChartDataEntry!
+        
+        let filled = CGMutablePath()
+        
+        e = dataSet.entryForIndex(bounds.min)
+        if e != nil {
+            filled.move(to: CGPoint(x: CGFloat(e.x), y: fillMin), transform: matrix)
+            filled.addLine(to: CGPoint(x: CGFloat(e.x), y: CGFloat(e.y * phaseY)), transform: matrix)
+        }
+        
+        // create a new path
+        for x in stride(from: (bounds.min + 1), through: bounds.range + bounds.min, by: 1) {
+            guard let e = dataSet.entryForIndex(x) else { continue }
+            
+            if isDrawSteppedEnabled {
+                guard let ePrev = dataSet.entryForIndex(x-1) else { continue }
+                filled.addLine(to: CGPoint(x: CGFloat(e.x), y: CGFloat(ePrev.y * phaseY)), transform: matrix)
+            }
+            
+            filled.addLine(to: CGPoint(x: CGFloat(e.x), y: CGFloat(e.y * phaseY)), transform: matrix)
+        }
+        
+        // close up
+        e = dataSet.entryForIndex(bounds.range + bounds.min)
+        if e != nil {
+            filled.addLine(to: CGPoint(x: CGFloat(e.x), y: fillMin), transform: matrix)
+        }
+        filled.closeSubpath()
+        
+        return filled
+    }
+    
     // Draw circular values
     private func drawCircles(context: CGContext, startPoint: Int = 0, shaderEnabled: Bool = false) {
         guard

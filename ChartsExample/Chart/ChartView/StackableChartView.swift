@@ -22,7 +22,7 @@ import Charts
 
 class StackableChartView: CombinedChartView {
     lazy var headerLabel: UILabel? = UILabel()
-    let conditionMarker = ConditionChartMarker.viewFromXib() as? ConditionChartMarker
+    lazy var conditionMarker = ConditionChartMarker.viewFromXib() as? ConditionChartMarker
     
     override init(frame: CGRect) {
         super.init(frame: frame)

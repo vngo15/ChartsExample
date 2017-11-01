@@ -53,7 +53,7 @@ class ConditionChartView: LineChartView {
         }
         averageLimitLine = ChartLimitLine(limit: entries.average, label: String(format: "Average: %1.f%%", entries.average))
         averageLimitLine?.lineWidth = 1;
-        averageLimitLine?.lineDashLengths = [2, 2, 0]
+        averageLimitLine?.lineDashLengths = [2, 2]
         averageLimitLine?.labelPosition = .leftTop
         averageLimitLine?.lineColor = UIColor.white
         averageLimitLine?.valueTextColor = UIColor.white

@@ -54,7 +54,7 @@ class WaterIntakeChartRenderer: BubbleChartRenderer {
         context.saveGState()
         for high in indices {
             guard
-                let dataSet = bubbleData.getDataSetByIndex(high.dataSetIndex) as? BubbleChartDataSet,
+                let dataSet = bubbleData.getDataSetByIndex(high.dataSetIndex) as? WaterIntakeChartDataSet,
                 dataSet.isHighlightEnabled
                 else { continue }
             let transform = dataProvider.getTransformer(forAxis: dataSet.axisDependency).valueToPixelMatrix

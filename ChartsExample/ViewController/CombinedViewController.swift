@@ -45,7 +45,7 @@ class CombinedViewController: UIViewController {
             for xValue in xAxisValues {
                 let entry = StackableChartDataEntry(x: xValue - 400 , y: 50, size: 15)
                 entry.strokeColor = UIColor.white
-                entry.colors = [UIColor.black.withAlphaComponent(0.5), UIColor.blue]
+                entry.colors = [UIColor.black.withAlphaComponent(0.5)]
                 xEntries.append(entry)
             }
             let scheduled = StackableChartDataSet(values: xEntries, label: "")

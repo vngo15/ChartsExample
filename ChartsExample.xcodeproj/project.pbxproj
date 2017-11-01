@@ -47,6 +47,9 @@
 		10E1F61B1F9EA1A1008DBFE7 /* ValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1F61A1F9EA1A1008DBFE7 /* ValueFormatter.swift */; };
 		10E1F61D1F9EA24B008DBFE7 /* Array+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1F61C1F9EA24B008DBFE7 /* Array+Helper.swift */; };
 		10E1F6201F9EC36F008DBFE7 /* GradientLineChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1F61F1F9EC36F008DBFE7 /* GradientLineChartDataSet.swift */; };
+		10E861D31FAA48DF00536762 /* WaterIntakeTotalMarker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10E861D21FAA48DF00536762 /* WaterIntakeTotalMarker.xib */; };
+		10E861D51FAA48E800536762 /* WaterIntakeTotalMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E861D41FAA48E800536762 /* WaterIntakeTotalMarker.swift */; };
+		10E861D71FAA62AC00536762 /* WaterIntakeChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E861D61FAA62AC00536762 /* WaterIntakeChartDataSet.swift */; };
 		A327F148A5CDD8DBEC410B56 /* Pods_ChartsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272998D36AC54628B7C754C9 /* Pods_ChartsExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +96,9 @@
 		10E1F61A1F9EA1A1008DBFE7 /* ValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatter.swift; sourceTree = "<group>"; };
 		10E1F61C1F9EA24B008DBFE7 /* Array+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Helper.swift"; sourceTree = "<group>"; };
 		10E1F61F1F9EC36F008DBFE7 /* GradientLineChartDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLineChartDataSet.swift; sourceTree = "<group>"; };
+		10E861D21FAA48DF00536762 /* WaterIntakeTotalMarker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaterIntakeTotalMarker.xib; sourceTree = "<group>"; };
+		10E861D41FAA48E800536762 /* WaterIntakeTotalMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterIntakeTotalMarker.swift; sourceTree = "<group>"; };
+		10E861D61FAA62AC00536762 /* WaterIntakeChartDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterIntakeChartDataSet.swift; sourceTree = "<group>"; };
 		272998D36AC54628B7C754C9 /* Pods_ChartsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChartsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		833262FA09DAC8DD0C2155AF /* Pods-ChartsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChartsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChartsExample/Pods-ChartsExample.debug.xcconfig"; sourceTree = "<group>"; };
 		B1EFBC8F25D5E94F4B60B2A4 /* Pods-ChartsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChartsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChartsExample/Pods-ChartsExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +130,7 @@
 				10444CE21FA939FE004DFADB /* WaterIntakeChartData.swift */,
 				10444CE41FA93B73004DFADB /* WaterIntakeChartDataEntry.swift */,
 				10444CE61FA93C83004DFADB /* WaterIntakeChartRenderer.swift */,
+				10E861D61FAA62AC00536762 /* WaterIntakeChartDataSet.swift */,
 			);
 			path = WaterIntakeChart;
 			sourceTree = "<group>";
@@ -251,6 +258,8 @@
 				10723A7E1FA8E5F00043B432 /* ActivityChartMarker.xib */,
 				1074C4ED1FAA3A8F004102AA /* WaterIntakeMarker.swift */,
 				1074C4EF1FAA3AA7004102AA /* WaterIntakeMarker.xib */,
+				10E861D41FAA48E800536762 /* WaterIntakeTotalMarker.swift */,
+				10E861D21FAA48DF00536762 /* WaterIntakeTotalMarker.xib */,
 			);
 			path = Marker;
 			sourceTree = "<group>";
@@ -343,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E861D31FAA48DF00536762 /* WaterIntakeTotalMarker.xib in Resources */,
 				107096ED1F99139900FBBB03 /* LaunchScreen.storyboard in Resources */,
 				107096EA1F99139900FBBB03 /* Assets.xcassets in Resources */,
 				1074C4F01FAA3AA7004102AA /* WaterIntakeMarker.xib in Resources */,
@@ -425,6 +435,7 @@
 				103CC2D01FA39E3500C9D88E /* StackableChartDataEntry.swift in Sources */,
 				10444CE31FA939FE004DFADB /* WaterIntakeChartData.swift in Sources */,
 				10C192EF1FA7C8B900FCA04D /* CGPath+Helper.swift in Sources */,
+				10E861D71FAA62AC00536762 /* WaterIntakeChartDataSet.swift in Sources */,
 				103CC2D51FA3F2F700C9D88E /* UIImage+Helper.swift in Sources */,
 				107096E51F99139900FBBB03 /* ConditionViewController.swift in Sources */,
 				10723A7D1FA8E5C70043B432 /* ActivityChartMarker.swift in Sources */,
@@ -442,6 +453,7 @@
 				10DAC5E41F9E82E500D293E7 /* UIColor+Helper.swift in Sources */,
 				10444CE71FA93C83004DFADB /* WaterIntakeChartRenderer.swift in Sources */,
 				10444CE51FA93B73004DFADB /* WaterIntakeChartDataEntry.swift in Sources */,
+				10E861D51FAA48E800536762 /* WaterIntakeTotalMarker.swift in Sources */,
 				107096E31F99139900FBBB03 /* AppDelegate.swift in Sources */,
 				108292111FA1459600D45E5D /* CombinedViewController.swift in Sources */,
 				107096FB1F991D6F00FBBB03 /* ConditionChartView.swift in Sources */,

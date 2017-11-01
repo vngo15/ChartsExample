@@ -21,7 +21,7 @@ extension Array where Element == ChartDataEntry {
         return isEmpty ? 0 : total / Double(count)
     }
     
-    func  sameDayEntries<T: ChartDataEntry>(fromEntry e: T) -> [T] {
+    func sameDayEntries<T: ChartDataEntry>(fromEntry e: T) -> [T] {
         var entries = [T]()
         let calendar = Calendar(identifier: .gregorian)
         for entry in self {
@@ -30,5 +30,19 @@ extension Array where Element == ChartDataEntry {
             }
         }
         return entries
+    }
+}
+
+extension Array where Element == WaterIntakeChartDataEntry {
+    func totalWaterIntake(forTime x: Double) -> Int {
+        var total = 0
+        let calendar = Calendar(identifier: .gregorian)
+        let rday = Date(timeIntervalSinceReferenceDate: x * 60)
+        for entry in self {
+            if let day = entry.date, calendar.isDate(day, inSameDayAs: rday) {
+                total += entry.count
+            }
+        }
+        return total
     }
 }
