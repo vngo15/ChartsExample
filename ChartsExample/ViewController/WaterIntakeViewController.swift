@@ -22,16 +22,16 @@ class WaterIntakeViewController: UIViewController {
         // Time is in minutes from reference day
         var xEntries = [WaterIntakeChartDataEntry]()
         for xValue in dates {
-            var entry = WaterIntakeChartDataEntry(x: xValue, y: 50, size: 5, count: Int(arc4random_uniform(4)) + 1)
+            var entry = WaterIntakeChartDataEntry(x: xValue, y: 50, size: 5, count: Double(arc4random_uniform(4) + 1))
             entry.highlightedMultipler = 1.4
             entry.colors = [UIColor.white, UIColor.blue]
             xEntries.append(entry)
             //create multiple data on the same day
-            entry = WaterIntakeChartDataEntry(x: xValue + 280, y: 50, size: 5, count: Int(arc4random_uniform(4)) + 1)
+            entry = WaterIntakeChartDataEntry(x: xValue + 280, y: 50, size: 5, count: Double(arc4random_uniform(4) + 1))
             entry.highlightedMultipler = 1.4
             entry.colors = [UIColor.white, UIColor.blue]
             xEntries.append(entry)
-            entry = WaterIntakeChartDataEntry(x: xValue + 560, y: 50, size: 5, count: Int(arc4random_uniform(4)) + 1)
+            entry = WaterIntakeChartDataEntry(x: xValue + 560, y: 50, size: 5, count: Double(arc4random_uniform(4) + 1))
             entry.highlightedMultipler = 1.4
             entry.colors = [UIColor.white, UIColor.blue]
             xEntries.append(entry)

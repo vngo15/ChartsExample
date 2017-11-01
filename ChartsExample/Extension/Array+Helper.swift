@@ -34,8 +34,8 @@ extension Array where Element == ChartDataEntry {
 }
 
 extension Array where Element == WaterIntakeChartDataEntry {
-    func totalWaterIntake(forTime x: Double) -> Int {
-        var total = 0
+    func totalWaterIntake(forTime x: Double) -> Double {
+        var total = 0.0
         let calendar = Calendar(identifier: .gregorian)
         let rday = Date(timeIntervalSinceReferenceDate: x * 60)
         for entry in self {

@@ -17,14 +17,14 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="Qny-1z-suN">
-                    <rect key="frame" x="42.5" y="0.0" width="20" height="20"/>
+                    <rect key="frame" x="40.5" y="0.0" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="dEI-LE-v1b"/>
                         <constraint firstAttribute="width" constant="20" id="gKL-qn-Yg8"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="zjr-Wb-u0n">
-                    <rect key="frame" x="8" y="0.0" width="30.5" height="20"/>
+                    <rect key="frame" x="8" y="0.0" width="28.5" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -38,16 +38,16 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="F1f-Vu-Cmj" firstAttribute="leading" secondItem="zjr-Wb-u0n" secondAttribute="leading" id="1fv-xc-drV"/>
                 <constraint firstItem="zjr-Wb-u0n" firstAttribute="top" secondItem="S33-J3-dMR" secondAttribute="top" id="4QS-Qx-bRw"/>
                 <constraint firstItem="Qny-1z-suN" firstAttribute="leading" secondItem="zjr-Wb-u0n" secondAttribute="trailing" constant="4" id="6pK-9j-xZJ"/>
                 <constraint firstItem="F1f-Vu-Cmj" firstAttribute="top" secondItem="Qny-1z-suN" secondAttribute="bottom" constant="4" id="DaA-Gt-otk"/>
                 <constraint firstItem="F1f-Vu-Cmj" firstAttribute="leading" secondItem="S33-J3-dMR" secondAttribute="leading" constant="8" id="Ddw-k1-QHT"/>
-                <constraint firstItem="zjr-Wb-u0n" firstAttribute="trailing" secondItem="Tg4-VG-DlQ" secondAttribute="centerX" id="dfI-bW-bBk"/>
+                <constraint firstItem="zjr-Wb-u0n" firstAttribute="trailing" secondItem="Tg4-VG-DlQ" secondAttribute="centerX" constant="-2" id="dfI-bW-bBk"/>
                 <constraint firstItem="Qny-1z-suN" firstAttribute="bottom" secondItem="zjr-Wb-u0n" secondAttribute="bottom" id="fPM-Tx-MTj"/>
                 <constraint firstAttribute="trailing" secondItem="F1f-Vu-Cmj" secondAttribute="trailing" constant="8" id="gu3-bu-2Xe"/>
                 <constraint firstItem="Qny-1z-suN" firstAttribute="top" secondItem="Tg4-VG-DlQ" secondAttribute="top" id="qrU-gk-nI5"/>
                 <constraint firstItem="F1f-Vu-Cmj" firstAttribute="bottom" secondItem="S33-J3-dMR" secondAttribute="bottom" id="w4s-jM-QsM"/>
-                <constraint firstItem="F1f-Vu-Cmj" firstAttribute="leading" secondItem="zjr-Wb-u0n" secondAttribute="leading" id="zcp-Au-2Sa"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
