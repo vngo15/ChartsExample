@@ -36,14 +36,14 @@ class CombinedViewController: UIViewController {
                 entry.label = "test"
                 xEntries.append(entry)
             }
-            let set = StackableChartDataSet(values: xEntries, label: "Bubble")
+            let set = StackableChartDataSet(values: xEntries, label: "ADVIL")
             set.drawValuesEnabled = false
             set.drawIconsEnabled = false
             
             //scheduleTime
             xEntries = [StackableChartDataEntry]()
             for xValue in xAxisValues {
-                let entry = StackableChartDataEntry(x: xValue , y: 50, size: 15)
+                let entry = StackableChartDataEntry(x: xValue - 400 , y: 50, size: 15)
                 entry.strokeColor = UIColor.white
                 entry.colors = [UIColor.black.withAlphaComponent(0.5), UIColor.blue]
                 xEntries.append(entry)

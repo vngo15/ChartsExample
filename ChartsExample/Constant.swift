@@ -21,7 +21,8 @@ struct K {
     
     struct Colors {
         static let gradients: [Gradient] = [ (UIColor.red, 10), (UIColor.yellow, 30), (UIColor.green, 60)]
-        static let shader = UIColor.black.withAlphaComponent(0.3).cgColor
+        static let shader = UIColor.black.withAlphaComponent(shaderAlpha).cgColor
+        static let shaderAlpha:CGFloat = 0.3
     }
     
     struct XAxis {

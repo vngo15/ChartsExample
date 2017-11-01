@@ -6,7 +6,7 @@
 //  Copyright © 2017 Vincent Ngo. All rights reserved.
 //
 //  Basically all the combination of StackableChart (SC) and GradientLineChart (GLC)
-//  ------------- y = 500 or whatever, defined in StakableChartData.contentTopPosition
+//  ------------- y = 700 or whatever, defined in StakableChartData.contentTopPosition
 //  |           | and leftAxis.axisMaximum
 //  |    SC     |
 //  |           |
@@ -35,41 +35,7 @@ class StackableChartView: CombinedChartView {
         style()
         initHeader()
     }
-    
-    
-    private func initHeader() {
-        addSubview(headerLabel!)
-        headerLabel?.textColor = UIColor.white
-        headerLabel?.textAlignment = .center
-        headerLabel?.text = "test"
-        headerLabel?.backgroundColor = UIColor.blue
-        headerLabel?.isHidden = true
-    }
-    
-    private func style() {
-        styleAxis()
-        leftAxis.axisMaximum = 500
-        
-        // init marker
-        conditionMarker?.gradients = K.Colors.gradients
-        conditionMarker?.chartView = self
-        let marker = ActivityChartMarker.viewFromXib()
-        marker?.chartView = self
-        self.marker = marker
-        
-        // init data
-        data = CombinedChartData(dataSet: nil)
-        if !(combinedData?.bubbleData is StackableChartData) {
-            combinedData?.bubbleData = StackableChartData(dataSets: nil, chartView:self)
-        }
-        highlighter = StackableHighlighter(chart: self)
-        renderer = StackableCombinedChartRenderer(chart: self, animator: chartAnimator, viewPortHandler: viewPortHandler)
-        if let combinedRenderer = renderer as? CombinedChartRenderer {
-            combinedRenderer.subRenderers.append(StackableChartRenderer(dataProvider: self, animator: chartAnimator, viewPortHandler: viewPortHandler))
-            combinedRenderer.subRenderers.append(GradientLineChartRenderer(dataProvider: self, animator: chartAnimator, viewPortHandler: viewPortHandler))
-        }
-    }
-    
+ 
     func setStackableDataSets(dataSets: [StackableChartDataSet]) {
        if let data = combinedData?.bubbleData as? StackableChartData {
             data.contentTopPosition = leftAxis.axisMaximum
@@ -105,7 +71,9 @@ class StackableChartView: CombinedChartView {
         super.draw(rect)
         drawConditionMarker()
     }
-    
+}
+
+private extension StackableChartView {
     private func drawConditionMarker() {
         guard valuesToHighlight(), let highlight = highlighted.first, let dataSets = lineData?.dataSets, let renderer = renderer as? StackableCombinedChartRenderer, let gRenderer = renderer.gradientLineRenderer() else {
             return
@@ -133,6 +101,39 @@ class StackableChartView: CombinedChartView {
         }
     }
     
+    private func initHeader() {
+        addSubview(headerLabel!)
+        headerLabel?.textColor = UIColor.white
+        headerLabel?.textAlignment = .center
+        headerLabel?.text = "test"
+        headerLabel?.backgroundColor = UIColor.blue
+        headerLabel?.isHidden = true
+    }
+    
+    private func style() {
+        styleAxis()
+        leftAxis.axisMaximum = 700
+        
+        // init marker
+        conditionMarker?.gradients = K.Colors.gradients
+        conditionMarker?.chartView = self
+        let marker = ActivityChartMarker.viewFromXib()
+        marker?.chartView = self
+        self.marker = marker
+        
+        // init data
+        data = CombinedChartData(dataSet: nil)
+        if !(combinedData?.bubbleData is StackableChartData) {
+            combinedData?.bubbleData = StackableChartData(dataSets: nil, chartView:self)
+        }
+        highlighter = StackableHighlighter(chart: self)
+        renderer = StackableCombinedChartRenderer(chart: self, animator: chartAnimator, viewPortHandler: viewPortHandler)
+        if let combinedRenderer = renderer as? CombinedChartRenderer {
+            combinedRenderer.subRenderers.append(StackableChartRenderer(dataProvider: self, animator: chartAnimator, viewPortHandler: viewPortHandler))
+            combinedRenderer.subRenderers.append(GradientLineChartRenderer(dataProvider: self, animator: chartAnimator, viewPortHandler: viewPortHandler))
+        }
+    }
+    
     private func updateHeader(highlight: Highlight?) {
         if let highlight = highlight, let entry = data?.entryForHighlight(highlight) {
             headerLabel?.isHidden = false
@@ -149,4 +150,3 @@ class StackableChartView: CombinedChartView {
         }
     }
 }
-

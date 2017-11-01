@@ -14,6 +14,8 @@ class ActivityChartMarker: MarkerView {
     @IBOutlet weak var durationLabel: UILabel!
     
     override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
+        titleLabel.invalidateIntrinsicContentSize()
+        durationLabel.invalidateIntrinsicContentSize()
         layoutIfNeeded()
     }
 }

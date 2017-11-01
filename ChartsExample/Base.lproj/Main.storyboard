@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cUF-De-8mU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -11,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="conditionViewController" id="BYZ-38-t0r" customClass="ConditionViewController" customModule="ChartsExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZk-mI-ZxZ" customClass="ConditionChartView" customModule="ChartsExample" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -57,24 +60,31 @@
             <objects>
                 <viewController id="45h-Rm-7tv" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dRB-Mj-m4w">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Iqk-bx-qTT">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ca1-Rs-xED">
-                                        <rect key="frame" x="245.5" y="0.0" width="109" height="263"/>
+                                        <rect key="frame" x="133" y="0.0" width="109" height="194.5"/>
                                         <state key="normal" title="Condition Chart"/>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" id="JLd-pM-u8h"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R53-DM-XTE">
-                                        <rect key="frame" x="243.5" y="273" width="113" height="263"/>
+                                        <rect key="frame" x="131" y="204.5" width="113" height="194"/>
                                         <state key="normal" title="Combined Chart"/>
                                         <connections>
                                             <segue destination="PrY-UR-l1N" kind="show" id="wYe-1Q-0v3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5T-od-nUw">
+                                        <rect key="frame" x="123" y="408.5" width="129" height="194.5"/>
+                                        <state key="normal" title="Water Intake Chart"/>
+                                        <connections>
+                                            <segue destination="teU-JN-kKZ" kind="show" id="T18-fh-lxi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -100,11 +110,11 @@
             <objects>
                 <viewController storyboardIdentifier="combinedChartView" id="PrY-UR-l1N" customClass="CombinedViewController" customModule="ChartsExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cgI-SX-QW7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOH-3y-Xve" customClass="StackableChartView" customModule="ChartsExample" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -124,6 +134,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7N9-iI-ZQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="38" y="1115"/>
+        </scene>
+        <!--Water Intake View Controller-->
+        <scene sceneID="3en-cy-ToX">
+            <objects>
+                <viewController id="teU-JN-kKZ" customClass="WaterIntakeViewController" customModule="ChartsExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rxh-w7-0dt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YTI-J8-Y3B" customClass="WaterIntakeChartView" customModule="ChartsExample" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.42079190449999998" green="0.50701667969999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FTr-gu-cVo" firstAttribute="trailing" secondItem="YTI-J8-Y3B" secondAttribute="trailing" id="0LM-Zn-9DD"/>
+                            <constraint firstItem="YTI-J8-Y3B" firstAttribute="leading" secondItem="FTr-gu-cVo" secondAttribute="leading" id="ExM-Ex-aDP"/>
+                            <constraint firstItem="FTr-gu-cVo" firstAttribute="bottom" secondItem="YTI-J8-Y3B" secondAttribute="bottom" id="h72-x0-BzM"/>
+                            <constraint firstItem="YTI-J8-Y3B" firstAttribute="top" secondItem="FTr-gu-cVo" secondAttribute="top" id="zJa-7K-J1V"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FTr-gu-cVo"/>
+                    </view>
+                    <connections>
+                        <outlet property="chartView" destination="YTI-J8-Y3B" id="Hyy-Cl-m2u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Efy-4F-jLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34" y="1783"/>
         </scene>
     </scenes>
 </document>

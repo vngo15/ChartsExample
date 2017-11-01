@@ -20,10 +20,15 @@ extension Array where Element == ChartDataEntry {
     var average: Double {
         return isEmpty ? 0 : total / Double(count)
     }
-}
-
-extension ChartDataEntry: Comparable {
-    public static func <(lhs: ChartDataEntry, rhs: ChartDataEntry) -> Bool {
-        return lhs.y < rhs.y
+    
+    func  sameDayEntries<T: ChartDataEntry>(fromEntry e: T) -> [T] {
+        var entries = [T]()
+        let calendar = Calendar(identifier: .gregorian)
+        for entry in self {
+            if entry != e, let entry = entry as? T, let day = entry.date, let rday = e.date, calendar.isDate(day, inSameDayAs: rday) {
+                entries.append(entry)
+            }
+        }
+        return entries
     }
 }

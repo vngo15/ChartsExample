@@ -74,8 +74,7 @@ public class GradientLineChartRenderer: LineRadarRenderer {
         context.restoreGState()
         // draw label
         if let dataProvider = dataProvider, let viewPortHandler = viewPortHandler {
-            let labelOffset = (dataProvider.chartYMax - dataProvider.chartYMin) / Double(dataProvider.data?.dataSetCount ?? 1) / 4
-            let pointBuffer = dataProvider.getTransformer(forAxis: dataSet.axisDependency).pixelForValues(x: 0.0, y: dataSet.yMax + labelOffset)
+            let pointBuffer = dataProvider.getTransformer(forAxis: dataSet.axisDependency).pixelForValues(x: 0.0, y: dataSet.yMax + 20)
             drawLabel(context: context, x: viewPortHandler.contentLeft + 10.0, y: pointBuffer.y, label: dataSet.label ?? "", font: K.Legend.font, textColor: K.Legend.color)
         }
     }
@@ -676,15 +675,15 @@ public class GradientLineChartRenderer: LineRadarRenderer {
     }
     
     func interpolate(xValue: Double, dataSet: LineChartDataSet) -> Double? {
-        let phaseY = animator?.phaseY ?? 1
         for i in 0..<dataSet.entryCount {
-            if dataSet.values[i].x >= xValue {
-                let nextIndex = i + 1 < dataSet.entryCount ? i + 1 : i
-                let cur = dataSet.values[i]
-                let next = dataSet.values[nextIndex]
-                
+            let next = dataSet.values[i]
+            if next.x == xValue {
+                return next.y
+            } else if next.x > xValue {
+                let pIndex = i - 1 > 0 ? i - 1 : 0
+                let prev = dataSet.values[pIndex]   
                 // return linear interpolation
-                return abs((xValue - cur.x) / (next.x - cur.x) * (next.y * phaseY - cur.y * phaseY) + cur.y * phaseY)
+                return abs((xValue - prev.x) / (next.x - prev.x) * (next.y - prev.y) + prev.y )
             }
         }
         return nil
@@ -869,26 +868,3 @@ private extension GradientLineChartRenderer {
         return set.isVisible && (set.isDrawValuesEnabled || set.isDrawIconsEnabled)
     }
 }
-
-extension BarLineScatterCandleBubbleRenderer {
-    /// Calculates and returns the x-bounds for the given DataSet in terms of index in their values array.
-    /// This includes minimum and maximum visible x, as well as range.
-    func xBounds(chart: BarLineScatterCandleBubbleChartDataProvider,
-                 dataSet: IBarLineScatterCandleBubbleChartDataSet,
-                 animator: Animator?) -> XBounds {
-        return XBounds(chart: chart, dataSet: dataSet, animator: animator)
-    }
-    
-    /// Checks if the provided entry object is in bounds for drawing considering the current animation phase.
-    func isInBoundsX(entry e: ChartDataEntry, dataSet: IBarLineScatterCandleBubbleChartDataSet) -> Bool {
-        let entryIndex = dataSet.entryIndex(entry: e)
-        
-        if Double(entryIndex) >= Double(dataSet.entryCount) * (animator?.phaseX ?? 1.0) {
-            return false
-        } else {
-            return true
-        }
-    }
-}
-
-

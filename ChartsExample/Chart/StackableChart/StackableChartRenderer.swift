@@ -44,7 +44,7 @@ class StackableChartRenderer: BubbleChartRenderer {
             var alpha: CGFloat = 1
             // check if it is highlighted, if it is, then change the alpha of the data
             if let data = dataProvider.bubbleData as? StackableChartData {
-                alpha = data.isDataHighlighted ? 0.5 : 1.0
+                alpha = data.isDataHighlighted ? K.Colors.shaderAlpha : 1.0
             }
             context.setAlpha(alpha)
             if entry.icon != nil {

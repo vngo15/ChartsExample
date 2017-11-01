@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="eg6-CV-mCF" customClass="WaterIntakeMarker" customModule="ChartsExample" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="53" height="29"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 CUPS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dwn-X2-Lok">
+                    <rect key="frame" x="8" y="0.0" width="37" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aj4-47-fZv" firstAttribute="trailing" secondItem="dwn-X2-Lok" secondAttribute="trailing" constant="8" id="URP-cU-tIn"/>
+                <constraint firstItem="dwn-X2-Lok" firstAttribute="top" secondItem="aj4-47-fZv" secondAttribute="top" id="XMk-yS-OlC"/>
+                <constraint firstItem="dwn-X2-Lok" firstAttribute="leading" secondItem="aj4-47-fZv" secondAttribute="leading" constant="8" id="YTF-x0-Zha"/>
+                <constraint firstItem="dwn-X2-Lok" firstAttribute="bottom" secondItem="aj4-47-fZv" secondAttribute="bottom" id="yl2-tS-v1D"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="aj4-47-fZv"/>
+            <connections>
+                <outlet property="cupLabel" destination="dwn-X2-Lok" id="bGD-r9-RGO"/>
+            </connections>
+            <point key="canvasLocation" x="-116.5" y="-350.5"/>
+        </view>
+    </objects>
+</document>
