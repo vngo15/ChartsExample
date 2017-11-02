@@ -192,11 +192,11 @@
 			isa = PBXGroup;
 			children = (
 				10C192EC1FA7C28500FCA04D /* StackableHighlighter.swift */,
+				10723A821FA91A8E0043B432 /* StackableChartDataSet.swift */,
 				1082920B1FA1270300D45E5D /* StackableChartRenderer.swift */,
 				108292011FA0F68E00D45E5D /* StackableChartData.swift */,
 				103CC2CF1FA39E3500C9D88E /* StackableChartDataEntry.swift */,
 				10C192E91FA7B27B00FCA04D /* StackableCombinedChartRenderer.swift */,
-				10723A821FA91A8E0043B432 /* StackableChartDataSet.swift */,
 			);
 			path = StackableChart;
 			sourceTree = "<group>";

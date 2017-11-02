@@ -72,10 +72,12 @@ public class GradientLineChartRenderer: LineRadarRenderer {
         }
         
         context.restoreGState()
-        // draw label
-        if let dataProvider = dataProvider, let viewPortHandler = viewPortHandler {
-            let pointBuffer = dataProvider.getTransformer(forAxis: dataSet.axisDependency).pixelForValues(x: 0.0, y: dataSet.yMax + 20)
-            drawLabel(context: context, x: viewPortHandler.contentLeft + 10.0, y: pointBuffer.y, label: dataSet.label ?? "", font: K.Legend.font, textColor: K.Legend.color)
+        if let dataSet = dataSet as? GradientLineChartDataSet, dataSet.legendEnabled {
+            // draw label
+            if let dataProvider = dataProvider, let viewPortHandler = viewPortHandler {
+                let pointBuffer = dataProvider.getTransformer(forAxis: dataSet.axisDependency).pixelForValues(x: 0.0, y: dataSet.yMax + 20)
+                drawLabel(context: context, x: viewPortHandler.contentLeft + 10.0, y: pointBuffer.y, label: dataSet.label ?? "", font: K.Legend.font, textColor: K.Legend.color)
+            }
         }
     }
     

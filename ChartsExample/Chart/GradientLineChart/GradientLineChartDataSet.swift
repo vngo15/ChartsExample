@@ -14,6 +14,7 @@ public class GradientLineChartDataSet: LineChartDataSet {
     var gradientEnabled: Bool = true
     var circularHighlightMultiplier: CGFloat = 1.7
     var circularHighlightIndicatorEnabled = true
+    var legendEnabled = true // enabled and disable legend above data
     
     // return scale factor for high and low point of the graph
     func circleScaleFactor(atIndex index: Int) -> CGFloat {

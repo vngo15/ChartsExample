@@ -11,6 +11,7 @@ import Charts
 
 class StackableChartDataSet: BubbleChartDataSet {
     var scheduleTimeEnabled: Bool = false
+    var legendEnabled: Bool = false // enable/disable legend above data set
     var scheduledDataSet: BubbleChartDataSet? {
         didSet {
             scheduledDataSet?.highlightEnabled = false

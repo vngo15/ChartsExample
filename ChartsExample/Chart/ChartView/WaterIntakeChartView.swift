@@ -27,9 +27,9 @@ class WaterIntakeChartView: CombinedChartView {
     }
     
     func setLineChartDataSet(dataSet: GradientLineChartDataSet) {
-        if let dataCount = lineData?.dataSets.count, dataCount > 0, let set1 = data?.dataSets[0] as? GradientLineChartDataSet {
-            set1.values = dataSet.values
-            moveViewToX(set1.xMax)
+        if let dataCount = lineData?.dataSets.count, dataCount > 0 {
+            lineData?.dataSets[0] = dataSet
+            moveViewToX(dataSet.xMax)
             data?.notifyDataChanged()
             notifyDataSetChanged()
         } else {

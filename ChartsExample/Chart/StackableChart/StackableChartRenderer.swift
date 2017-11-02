@@ -13,7 +13,8 @@ class StackableChartRenderer: BubbleChartRenderer {
         guard
             let dataProvider = dataProvider,
             let viewPortHandler = self.viewPortHandler,
-            let animator = animator
+            let animator = animator,
+            let dataSet = dataSet as? StackableChartDataSet
             else { return }
         
         let xBounds = XBounds()
@@ -22,7 +23,7 @@ class StackableChartRenderer: BubbleChartRenderer {
         let valueToPixelMatrix = trans.valueToPixelMatrix
         var pointBuffer = CGPoint()
         
-        if let sDataSet = dataSet as? StackableChartDataSet, sDataSet.scheduleTimeEnabled, let scheduled = sDataSet.scheduledDataSet {
+        if dataSet.scheduleTimeEnabled, let scheduled = dataSet.scheduledDataSet {
             // recursive call
             drawDataSet(context: context, dataSet: scheduled)
         }
@@ -83,16 +84,18 @@ class StackableChartRenderer: BubbleChartRenderer {
         }
 
         context.restoreGState()
-        // Draw label on top of the data set
-        var labelOffset = 0.0
-        if let data = dataProvider.data as? StackableChartData {
-            labelOffset = (data.contentTopPosition - data.contentBottomPosition) / Double(data.dataSetCount) / 4
-        } else {
-            labelOffset = (dataProvider.chartYMax - dataProvider.chartYMin) / Double(dataProvider.data?.dataSetCount ?? 1) / 4
+        if dataSet.legendEnabled {
+            // Draw label on top of the data set
+            var labelOffset = 0.0
+            if let data = dataProvider.data as? StackableChartData {
+                labelOffset = (data.contentTopPosition - data.contentBottomPosition) / Double(data.dataSetCount) / 4
+            } else {
+                labelOffset = (dataProvider.chartYMax - dataProvider.chartYMin) / Double(dataProvider.data?.dataSetCount ?? 1) / 4
+            }
+            pointBuffer.y = CGFloat(dataSet.yMax + labelOffset)
+            pointBuffer = pointBuffer.applying(valueToPixelMatrix)
+            drawLabel(context: context, x: viewPortHandler.contentLeft + 10.0, y: pointBuffer.y, label: dataSet.label ?? "", font: K.Legend.font, textColor: K.Legend.color)
         }
-        pointBuffer.y = CGFloat(dataSet.yMax + labelOffset)
-        pointBuffer = pointBuffer.applying(valueToPixelMatrix)
-        drawLabel(context: context, x: viewPortHandler.contentLeft + 10.0, y: pointBuffer.y, label: dataSet.label ?? "", font: K.Legend.font, textColor: K.Legend.color)
     }
     
     override func drawHighlighted(context: CGContext, indices: [Highlight]) {
