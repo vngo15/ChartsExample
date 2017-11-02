@@ -39,7 +39,6 @@
 		10BBE6A61F9E4D7B00FAD669 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBE6A51F9E4D7B00FAD669 /* Constant.swift */; };
 		10C192EA1FA7B27B00FCA04D /* StackableCombinedChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C192E91FA7B27B00FCA04D /* StackableCombinedChartRenderer.swift */; };
 		10C192ED1FA7C28500FCA04D /* StackableHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C192EC1FA7C28500FCA04D /* StackableHighlighter.swift */; };
-		10C192EF1FA7C8B900FCA04D /* CGPath+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C192EE1FA7C8B900FCA04D /* CGPath+Helper.swift */; };
 		10DAC5E21F9E68B100D293E7 /* InsightXAxisRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DAC5E11F9E68B100D293E7 /* InsightXAxisRenderer.swift */; };
 		10DAC5E41F9E82E500D293E7 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DAC5E31F9E82E500D293E7 /* UIColor+Helper.swift */; };
 		10DAC5E61F9E8E0700D293E7 /* ConditionChartMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DAC5E51F9E8E0700D293E7 /* ConditionChartMarker.swift */; };
@@ -88,7 +87,6 @@
 		10BBE6A51F9E4D7B00FAD669 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		10C192E91FA7B27B00FCA04D /* StackableCombinedChartRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackableCombinedChartRenderer.swift; sourceTree = "<group>"; };
 		10C192EC1FA7C28500FCA04D /* StackableHighlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackableHighlighter.swift; sourceTree = "<group>"; };
-		10C192EE1FA7C8B900FCA04D /* CGPath+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+Helper.swift"; sourceTree = "<group>"; };
 		10DAC5E11F9E68B100D293E7 /* InsightXAxisRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightXAxisRenderer.swift; sourceTree = "<group>"; };
 		10DAC5E31F9E82E500D293E7 /* UIColor+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helper.swift"; sourceTree = "<group>"; };
 		10DAC5E51F9E8E0700D293E7 /* ConditionChartMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionChartMarker.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 				10DAC5E31F9E82E500D293E7 /* UIColor+Helper.swift */,
 				10E1F61C1F9EA24B008DBFE7 /* Array+Helper.swift */,
 				103CC2D41FA3F2F700C9D88E /* UIImage+Helper.swift */,
-				10C192EE1FA7C8B900FCA04D /* CGPath+Helper.swift */,
 				1074C4EB1FAA2C1A004102AA /* Chart+Helper.swift */,
 			);
 			path = Extension;
@@ -434,7 +431,6 @@
 				10444CE91FA94317004DFADB /* WaterIntakeViewController.swift in Sources */,
 				103CC2D01FA39E3500C9D88E /* StackableChartDataEntry.swift in Sources */,
 				10444CE31FA939FE004DFADB /* WaterIntakeChartData.swift in Sources */,
-				10C192EF1FA7C8B900FCA04D /* CGPath+Helper.swift in Sources */,
 				10E861D71FAA62AC00536762 /* WaterIntakeChartDataSet.swift in Sources */,
 				103CC2D51FA3F2F700C9D88E /* UIImage+Helper.swift in Sources */,
 				107096E51F99139900FBBB03 /* ConditionViewController.swift in Sources */,
