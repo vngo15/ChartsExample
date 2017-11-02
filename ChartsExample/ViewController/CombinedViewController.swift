@@ -39,7 +39,8 @@ class CombinedViewController: UIViewController {
             let set = StackableChartDataSet(values: xEntries, label: "ADVIL")
             set.drawValuesEnabled = false
             set.drawIconsEnabled = false
-            
+            set.legendEnabled = true // enable/disable legend above dataset
+            set.scheduleTimeEnabled = true // show/hide schedule dataset, also can set it as a group in data
             //scheduleTime
             xEntries = [StackableChartDataEntry]()
             for xValue in xAxisValues {
