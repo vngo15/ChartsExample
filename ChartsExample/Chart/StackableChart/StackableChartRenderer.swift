@@ -22,7 +22,7 @@ class StackableChartRenderer: BubbleChartRenderer {
         let valueToPixelMatrix = trans.valueToPixelMatrix
         var pointBuffer = CGPoint()
         
-        if let sDataSet = dataSet as? StackableChartDataSet, let scheduled = sDataSet.scheduledDataSet {
+        if let sDataSet = dataSet as? StackableChartDataSet, sDataSet.scheduleTimeEnabled, let scheduled = sDataSet.scheduledDataSet {
             // recursive call
             drawDataSet(context: context, dataSet: scheduled)
         }

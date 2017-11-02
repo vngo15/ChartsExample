@@ -42,6 +42,7 @@ class StackableChartView: CombinedChartView {
             data.contentBottomPosition = leftAxis.axisMinimum + 110
             data.setValueTextColor(UIColor.white)
             data.dataSets = dataSets
+            data.scheduleTimeEnabled = false // disable or enable schedule time
         }
         notifyDataSetChanged()
     }

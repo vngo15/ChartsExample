@@ -10,6 +10,7 @@ import UIKit
 import Charts
 
 class StackableChartDataSet: BubbleChartDataSet {
+    var scheduleTimeEnabled: Bool = false
     var scheduledDataSet: BubbleChartDataSet? {
         didSet {
             scheduledDataSet?.highlightEnabled = false

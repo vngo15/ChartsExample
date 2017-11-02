@@ -13,6 +13,15 @@ class StackableChartData: BubbleChartData {
     var contentBottomPosition = -Double.greatestFiniteMagnitude
     var contentTopPosition = Double.greatestFiniteMagnitude
     weak var chartView: ChartViewBase?
+    var scheduleTimeEnabled: Bool = false {
+        didSet {
+            guard let dataSets = dataSets as? [StackableChartDataSet], !dataSets.isEmpty else { return }
+            for dataSet in dataSets {
+                dataSet.scheduleTimeEnabled = self.scheduleTimeEnabled
+            }
+            notifyDataChanged()
+        }
+    }
     var isDataHighlighted: Bool {
         return chartView != nil ? chartView!.valuesToHighlight() : false
     }
