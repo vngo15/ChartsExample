@@ -23,6 +23,7 @@ import Charts
 class StackableChartView: CombinedChartView {
     lazy var headerLabel: UILabel? = UILabel()
     lazy var conditionMarker = ConditionChartMarker.viewFromXib() as? ConditionChartMarker
+    var multipleHighlightEnabled = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,7 +64,7 @@ class StackableChartView: CombinedChartView {
         super.highlightValue(highlight, callDelegate: callDelegate)
         updateHeader(highlight: highlight)
         
-        if let highlight = highlight, let highlights = (highlighter as? StackableHighlighter)?.getHighlights(xValue: highlight.x, x: 0, y: 0) {
+        if multipleHighlightEnabled, let highlight = highlight, let highlights = (highlighter as? StackableHighlighter)?.getHighlights(xValue: highlight.x, x: 0, y: 0) {
             highlightValues(highlights) // highlight multiple values
         }
     }
