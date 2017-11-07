@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Kmh-Vv-Ilo">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Combined View Controller-->
+        <scene sceneID="EY6-gF-8wa">
+            <objects>
+                <viewController storyboardIdentifier="combinedChartView" id="Kmh-Vv-Ilo" customClass="CombinedViewController" customModule="ChartsExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zek-d8-Yy9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zVe-d2-niv" customClass="StackableChartView" customModule="ChartsExample" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.42079190449999998" green="0.50701667969999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="L69-lY-NEM" firstAttribute="trailing" secondItem="zVe-d2-niv" secondAttribute="trailing" id="Ftm-Cm-06e"/>
+                            <constraint firstItem="L69-lY-NEM" firstAttribute="bottom" secondItem="zVe-d2-niv" secondAttribute="bottom" id="IV9-VH-lbS"/>
+                            <constraint firstItem="zVe-d2-niv" firstAttribute="leading" secondItem="L69-lY-NEM" secondAttribute="leading" id="d8r-SC-ZFC"/>
+                            <constraint firstItem="zVe-d2-niv" firstAttribute="top" secondItem="L69-lY-NEM" secondAttribute="top" id="k8Z-Ug-2zb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="L69-lY-NEM"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="chartView" destination="zVe-d2-niv" id="hbI-14-6dv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y8L-hR-DgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="38" y="725"/>
+        </scene>
+    </scenes>
+</document>

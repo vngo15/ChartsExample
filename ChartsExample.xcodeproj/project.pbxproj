@@ -50,6 +50,13 @@
 		10E861D51FAA48E800536762 /* WaterIntakeTotalMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E861D41FAA48E800536762 /* WaterIntakeTotalMarker.swift */; };
 		10E861D71FAA62AC00536762 /* WaterIntakeChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E861D61FAA62AC00536762 /* WaterIntakeChartDataSet.swift */; };
 		A327F148A5CDD8DBEC410B56 /* Pods_ChartsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272998D36AC54628B7C754C9 /* Pods_ChartsExample.framework */; };
+		FCE969761FB0F046007BD830 /* InsightsDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE969751FB0F046007BD830 /* InsightsDetail.storyboard */; };
+		FCE969781FB0F0E1007BD830 /* InsightsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE969771FB0F0E1007BD830 /* InsightsDetailViewController.swift */; };
+		FCE9697A1FB0FECC007BD830 /* Combined.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE969791FB0FECC007BD830 /* Combined.storyboard */; };
+		FCE9697C1FB0FF48007BD830 /* Condition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE9697B1FB0FF48007BD830 /* Condition.storyboard */; };
+		FCE9697E1FB0FF59007BD830 /* Water.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE9697D1FB0FF59007BD830 /* Water.storyboard */; };
+		FCE969801FB12E67007BD830 /* PainGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9697F1FB12E67007BD830 /* PainGraphViewController.swift */; };
+		FCE969821FB12E98007BD830 /* PainGraph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE969811FB12E98007BD830 /* PainGraph.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +107,13 @@
 		272998D36AC54628B7C754C9 /* Pods_ChartsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChartsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		833262FA09DAC8DD0C2155AF /* Pods-ChartsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChartsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChartsExample/Pods-ChartsExample.debug.xcconfig"; sourceTree = "<group>"; };
 		B1EFBC8F25D5E94F4B60B2A4 /* Pods-ChartsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChartsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChartsExample/Pods-ChartsExample.release.xcconfig"; sourceTree = "<group>"; };
+		FCE969751FB0F046007BD830 /* InsightsDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InsightsDetail.storyboard; sourceTree = "<group>"; };
+		FCE969771FB0F0E1007BD830 /* InsightsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsDetailViewController.swift; sourceTree = "<group>"; };
+		FCE969791FB0FECC007BD830 /* Combined.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Combined.storyboard; sourceTree = "<group>"; };
+		FCE9697B1FB0FF48007BD830 /* Condition.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Condition.storyboard; sourceTree = "<group>"; };
+		FCE9697D1FB0FF59007BD830 /* Water.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Water.storyboard; sourceTree = "<group>"; };
+		FCE9697F1FB12E67007BD830 /* PainGraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PainGraphViewController.swift; sourceTree = "<group>"; };
+		FCE969811FB12E98007BD830 /* PainGraph.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PainGraph.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +169,7 @@
 		107096E11F99139900FBBB03 /* ChartsExample */ = {
 			isa = PBXGroup;
 			children = (
+				FCE969741FB0F020007BD830 /* Storyboards */,
 				108745081FA246AA00357ACF /* Chart */,
 				1082920A1FA125FB00D45E5D /* ViewController */,
 				10BBE6A71F9E4E5B00FAD669 /* Extension */,
@@ -174,6 +189,8 @@
 				107096E41F99139900FBBB03 /* ConditionViewController.swift */,
 				108292101FA1459600D45E5D /* CombinedViewController.swift */,
 				10444CE81FA94317004DFADB /* WaterIntakeViewController.swift */,
+				FCE969771FB0F0E1007BD830 /* InsightsDetailViewController.swift */,
+				FCE9697F1FB12E67007BD830 /* PainGraphViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -287,6 +304,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FCE969741FB0F020007BD830 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				FCE969751FB0F046007BD830 /* InsightsDetail.storyboard */,
+				FCE969791FB0FECC007BD830 /* Combined.storyboard */,
+				FCE9697B1FB0FF48007BD830 /* Condition.storyboard */,
+				FCE9697D1FB0FF59007BD830 /* Water.storyboard */,
+				FCE969811FB12E98007BD830 /* PainGraph.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -352,10 +381,15 @@
 				10E861D31FAA48DF00536762 /* WaterIntakeTotalMarker.xib in Resources */,
 				107096ED1F99139900FBBB03 /* LaunchScreen.storyboard in Resources */,
 				107096EA1F99139900FBBB03 /* Assets.xcassets in Resources */,
+				FCE9697C1FB0FF48007BD830 /* Condition.storyboard in Resources */,
+				FCE969761FB0F046007BD830 /* InsightsDetail.storyboard in Resources */,
 				1074C4F01FAA3AA7004102AA /* WaterIntakeMarker.xib in Resources */,
 				107096F51F9913B000FBBB03 /* podfile in Resources */,
 				10723A7F1FA8E5F00043B432 /* ActivityChartMarker.xib in Resources */,
+				FCE969821FB12E98007BD830 /* PainGraph.storyboard in Resources */,
+				FCE9697A1FB0FECC007BD830 /* Combined.storyboard in Resources */,
 				107096E81F99139900FBBB03 /* Main.storyboard in Resources */,
+				FCE9697E1FB0FF59007BD830 /* Water.storyboard in Resources */,
 				10DAC5E91F9E8F6B00D293E7 /* ConditionChartMarker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,10 +483,12 @@
 				10DAC5E41F9E82E500D293E7 /* UIColor+Helper.swift in Sources */,
 				10444CE71FA93C83004DFADB /* WaterIntakeChartRenderer.swift in Sources */,
 				10444CE51FA93B73004DFADB /* WaterIntakeChartDataEntry.swift in Sources */,
+				FCE969781FB0F0E1007BD830 /* InsightsDetailViewController.swift in Sources */,
 				10E861D51FAA48E800536762 /* WaterIntakeTotalMarker.swift in Sources */,
 				107096E31F99139900FBBB03 /* AppDelegate.swift in Sources */,
 				108292111FA1459600D45E5D /* CombinedViewController.swift in Sources */,
 				107096FB1F991D6F00FBBB03 /* ConditionChartView.swift in Sources */,
+				FCE969801FB12E67007BD830 /* PainGraphViewController.swift in Sources */,
 				10DAC5E21F9E68B100D293E7 /* InsightXAxisRenderer.swift in Sources */,
 				1074C4EC1FAA2C1A004102AA /* Chart+Helper.swift in Sources */,
 			);
@@ -593,6 +629,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HS2AU5449E;
 				INFOPLIST_FILE = ChartsExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swensonhe.ChartsExample;
@@ -608,6 +645,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HS2AU5449E;
 				INFOPLIST_FILE = ChartsExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swensonhe.ChartsExample;

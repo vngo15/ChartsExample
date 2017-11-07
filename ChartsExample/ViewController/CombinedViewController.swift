@@ -10,7 +10,15 @@ import UIKit
 import Charts
 class CombinedViewController: UIViewController {
     @IBOutlet weak var chartView: StackableChartView!
-    
+
+    static func instantiateViewControllerFromStoryboard() -> CombinedViewController {
+        let conditionStoryboard = UIStoryboard(name: "Combined", bundle: nil)
+        guard let myVC = conditionStoryboard.instantiateInitialViewController() as? CombinedViewController else {
+            fatalError("Expected \(type(of: self))")
+        }
+        return myVC
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initStackableChart()
