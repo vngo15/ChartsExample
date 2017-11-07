@@ -18,6 +18,7 @@ class StackableChartDataSet: BubbleChartDataSet {
         }
     }
     
+    
     @available(*, deprecated: 1.0, message: "Use StackableChartDataEntry.colors instead")
     override func setColor(_ color: NSUIColor) {}
     

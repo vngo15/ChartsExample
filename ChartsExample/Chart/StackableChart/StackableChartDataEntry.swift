@@ -16,6 +16,10 @@ class StackableChartDataEntry: BubbleChartDataEntry {
     var highlightedIcon: NSUIImage?
     var label: String?
     var strokeColor: UIColor?
+    var halo: Bool = false
+    var haloColor: UIColor?
+    var haloSpacing: CGFloat = 2.0
+    var haloWidth: CGFloat = 2.0
     
     init(x: Double, y: Double, size: CGFloat, timeSpan: Double? = nil, icon: NSUIImage? = nil, highlightedIcon: NSUIImage? = nil, data: AnyObject? = nil) {
         super.init(x: x, y: y, size: size, icon: icon, data: data)
@@ -26,4 +30,15 @@ class StackableChartDataEntry: BubbleChartDataEntry {
     required init() {
         super.init()
     }
+
+    func getHaloRect() -> CGRect {
+
+        let haloOffset = haloSpacing + haloWidth
+
+        return CGRect(x: CGFloat(x) - haloOffset,
+                      y: CGFloat(y) - haloOffset,
+                      width: size + haloOffset * 2,
+                      height: size + haloOffset * 2)
+    }
+
 }

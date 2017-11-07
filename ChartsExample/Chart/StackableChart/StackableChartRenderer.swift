@@ -79,7 +79,18 @@ class StackableChartRenderer: BubbleChartRenderer {
                     context.setStrokeColor(strokeColor.cgColor)
                     context.strokePath()
                 }
-                
+
+                if let haloColor = entry.haloColor, entry.halo {
+
+                    let haloPath = UIBezierPath(ovalIn: entry.getHaloRect())
+
+                    context.addPath(haloPath.cgPath)
+
+                    context.setStrokeColor(haloColor.cgColor)
+                    context.setLineWidth(entry.haloWidth)
+
+                    context.strokePath()
+                }
             }
         }
 

@@ -40,32 +40,41 @@ class PainGraphViewController: UIViewController {
 
         for painCategoryInstance in painCategoryInstances {
             var painDataEntries = [StackableChartDataEntry]()
-            var otherPainDataEntries = [StackableChartDataEntry]()
             for painInstance in painCategoryInstance.activities {
 
                 let minutesSinceReferenceDate = painInstance.startTime.timeIntervalSinceReferenceDate / 60
 
                 let entry = StackableChartDataEntry(x: minutesSinceReferenceDate,
-                                                    y: 20,
+                                                    y: 50,
                                                     size: 10)
-                entry.highlightedIcon = UIImage(named: "icon")
-                entry.icon = UIImage(named: "icon")
-                entry.label = "test"
-                
+
+                switch painInstance.intensity {
+                case .none:
+                    entry.colors = [UIColor.green]
+                case .mild:
+                    entry.colors = [UIColor.yellow]
+                case .moderate:
+                    entry.colors = [UIColor.orange]
+                case .bad:
+                    entry.colors = [UIColor.orange]
+                    entry.halo = true
+                    entry.haloColor = UIColor.red.withAlphaComponent(0.5)
+                case .severe:
+                    entry.colors = [UIColor.red]
+                    entry.halo = true
+                    entry.haloColor = UIColor.red.withAlphaComponent(0.5)
+                }
+
                 painDataEntries.append(entry)
-                otherPainDataEntries.append(entry)
             }
 
             let painDataSet = StackableChartDataSet(values: painDataEntries,
                                                     label: painCategoryInstance.activityTitle)
-            let otherPainDataSet = StackableChartDataSet(values: otherPainDataEntries,
-                                                         label: nil)
 
             painDataSet.drawValuesEnabled = false
             painDataSet.drawIconsEnabled = false
             painDataSet.legendEnabled = true
 
-            painDataSet.scheduledDataSet = otherPainDataSet
             painDataSets.append(painDataSet)
         }
 
@@ -126,7 +135,7 @@ class PainData {
     }
 
     class func mockPainData() -> [PainData] {
-        let possiblePainCategories = ["Left Shoulder", "Right Shoulder", "Head"]//, "Left Hand", "Right Hand"]
+        let possiblePainCategories = ["Left Shoulder", "Right Shoulder", "Head", "Left Hand", "Right Hand"]
 
         var painData = [PainData]()
 
@@ -145,10 +154,12 @@ class PainData {
                                       endTime: time,
                                       duration: 0,
                                       durationInHours: 0,
-                                      intensity: PainIntensity(rawValue: Int(arc4random_uniform(4)))!)
+                                      intensity: PainIntensity(rawValue: Int(arc4random_uniform(5)))!)
 
                 thisCategoryPainData.activities.append(painLog)
             }
+
+            thisCategoryPainData.activities.sort { $0.startTime.timeIntervalSince($1.startTime) < 0 }
 
             painData.append(thisCategoryPainData)
         }
